@@ -89,13 +89,33 @@
       .alumni-card { grid-template-columns: 1fr; gap: 6px; }
       .alumni-year { padding-top: 0; }
     }
+    .nav-links { display: flex; gap: 24px; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; }
+    .mobile-menu {
+      display: none; position: fixed; top: 56px; left: 0; right: 0; z-index: 199;
+      background: var(--navy); padding: 16px 7%; flex-direction: column; gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+    .mobile-menu a:hover { color: #fff; }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .alumni-card { grid-template-columns: 1fr; gap: 6px; }
+      .alumni-year { padding-top: 0; }
+      .content { padding: 32px 5% 60px; }
+      .page-header { padding: 80px 5% 32px; }
+      .jump-bar { padding: 0 5%; }
+    }
   </style>
 </head>
 <body>
 
-<nav style="background:#0f2744;border-bottom:none;">
-  <a class="brand" style="color:#fff;font-family:Inter,sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:0.04em;text-transform:uppercase;" href="index.html">Ying-Chieh Chan</a>
-  <ul style="list-style:none;display:flex;gap:24px;">
+<nav>
+  <a class="brand" href="index.html">Ying-Chieh Chan</a>
+  <ul class="nav-links" style="list-style:none;">
     <li><a href="index.html#research" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Research</a></li>
     <li><a href="index.html#education" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Education</a></li>
     <li><a href="publications.html" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Publications</a></li>
@@ -103,7 +123,20 @@
     <li><a href="group.html" style="color:#fff;text-decoration:none;font-size:0.77rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">Group</a></li>
     <li><a href="index.html#contact" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact</a></li>
   </ul>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  </ul>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#research">Research</a>
+  <a href="index.html#education">Education</a>
+  <a href="publications.html">Publications</a>
+  <a href="index.html#awards">Awards</a>
+  <a href="group.html" style="color:#fff;font-weight:700;">Group</a>
+  <a href="index.html#contact">Contact</a>
+</div>
 
 <div class="page-header">
   <div class="page-header-inner">
