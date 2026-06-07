@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications — Ying-Chieh Chan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f2744; --blue: #1a56c4; --blue-dim: #e8eef9;
+      --white: #ffffff; --gray: #4b5563; --gray-light: #f8f9fb;
+      --border: #e2e6ec; --dark: #0d1b2e; --muted: #8492a6;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray); line-height: 1.65; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 7%; height: 56px;
+    }
+    .brand { font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; color: #fff; text-decoration: none; text-transform: uppercase; }
+
+    /* PAGE HEADER */
+    .page-header { padding: 96px 7% 40px; border-bottom: 1px solid var(--border); background: var(--white); }
+    .page-header-inner { max-width: 860px; margin: 0 auto; }
+    .page-kicker { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+    .page-header h1 { font-size: 1.8rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.02em; }
+    .page-header p { font-size: 0.875rem; color: var(--muted); max-width: 560px; line-height: 1.6; }
+
+    /* FILTER BAR */
+    .filter-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 7%; position: sticky; top: 56px; z-index: 100; }
+    .filter-bar-inner { max-width: 860px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+    .filter-btn {
+      padding: 13px 16px; font-size: 0.77rem; font-weight: 500; color: var(--muted);
+      background: none; border: none; border-bottom: 2px solid transparent;
+      cursor: pointer; white-space: nowrap; transition: color .2s, border-color .2s;
+      letter-spacing: 0.02em;
+    }
+    .filter-btn:hover { color: var(--blue); }
+    .filter-btn.active { color: var(--navy); border-bottom-color: var(--navy); font-weight: 700; }
+
+    /* CONTENT */
+    .pub-content { max-width: 860px; margin: 0 auto; padding: 36px 7% 80px; }
+    .pub-section { margin-bottom: 44px; }
+    .pub-section-title {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--blue); border-left: 2px solid var(--navy); padding-left: 10px;
+      margin-bottom: 14px;
+    }
+
+    /* PUB ITEMS */
+    .pub-item {
+      padding: 14px 16px; margin-bottom: 6px;
+      border: 1px solid var(--border); background: var(--white);
+      transition: border-color .15s;
+    }
+    .pub-item:hover { border-color: #b8c5d6; }
+    .pub-item .pt { font-size: 0.875rem; font-weight: 500; color: var(--dark); margin-bottom: 4px; line-height: 1.5; }
+    .pub-item .pa { font-size: 0.78rem; color: var(--muted); }
+    .pub-item .pa strong { color: var(--dark); font-weight: 600; }
+    .pub-item .pj { font-size: 0.78rem; color: var(--blue); font-style: italic; margin-top: 3px; }
+    .pub-item .pdoi { margin-top: 5px; }
+    .pub-item .pdoi a {
+      font-size: 0.74rem; color: var(--muted); text-decoration: none;
+      border-bottom: 1px dotted var(--border); transition: color .15s;
+    }
+    .pub-item .pdoi a:hover { color: var(--blue); }
+    .pub-item .tags { display: flex; gap: 5px; margin-top: 7px; flex-wrap: wrap; }
+    .pub-tag { font-size: 0.67rem; font-weight: 600; padding: 2px 8px; border: 1px solid var(--border); color: var(--muted); letter-spacing: 0.03em; }
+    .pub-tag.green { border-color: #bbf7d0; color: #047857; }
+    .pub-tag.purple { border-color: #ddd6fe; color: #6d28d9; }
+
+    /* CONF ITEMS */
+    .conf-item {
+      padding: 12px 16px; margin-bottom: 5px;
+      border: 1px solid var(--border); background: var(--white);
+      font-size: 0.84rem; color: var(--gray);
+    }
+    .conf-item .ct { font-weight: 500; color: var(--dark); margin-bottom: 3px; }
+    .conf-item .cv { font-size: 0.77rem; color: var(--muted); }
+
+    footer { background: #070e1a; text-align: center; padding: 16px; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">Ying-Chieh Chan</a>
+  <ul style="list-style:none;display:flex;gap:24px;">
+    <li><a href="index.html#research" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Research</a></li>
+    <li><a href="index.html#education" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Education</a></li>
+    <li><a href="publications.html" style="color:#fff;text-decoration:none;font-size:0.77rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">Publications</a></li>
+    <li><a href="index.html#awards" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Awards</a></li>
+    <li><a href="group.html" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Group</a></li>
+    <li><a href="index.html#contact" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="page-kicker">Academic Output</p>
+    <h1>Publications</h1>
+    <p>Journal articles, international conference papers, and other scholarly work. Includes 30+ peer-reviewed journal articles and 70+ conference papers.</p>
+    <p style="font-size:0.8rem; color:var(--muted); margin-top:10px;"><sup style="color:var(--amber); font-weight:700;">*</sup> Corresponding author</p>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <button class="filter-btn active" onclick="filterPubs('all', this)">All</button>
+    <button class="filter-btn" onclick="filterPubs('journal', this)">Journal Articles</button>
+    <button class="filter-btn" onclick="filterPubs('conference', this)">Conference Papers</button>
+    <button class="filter-btn" onclick="filterPubs('views', this)">Window Views</button>
+    <button class="filter-btn" onclick="filterPubs('daylight', this)">Daylighting</button>
+    <button class="filter-btn" onclick="filterPubs('energy', this)">Building Thermal</button>
+    <button class="filter-btn" onclick="filterPubs('iaq', this)">IAQ</button>
+    <button class="filter-btn" onclick="filterPubs('microclimate', this)">Urban Microclimate</button>
+    <button class="filter-btn" onclick="filterPubs('other', this)">Other</button>
+  </div>
+</div>
+
+<div class="pub-content">
+  <div class="pub-section" data-cat="journal">
+
+    <div class="pub-section-title">Journal Articles — 2025–2026</div>
+
+    <div class="pub-item" data-tags="journal views">
+      <div class="pt">A ray-casting workflow for extraction of occupant perspective views from recorded window view footage</div>
+      <div class="pa">Simeon Ingabo, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2026)</div>
+      <div class="pj">Building and Environment, 297, 114578</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2026.114578" target="_blank">https://doi.org/10.1016/j.buildenv.2026.114578</a></div>
+      <div class="tags"><span class="pub-tag">Window Views</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal other">
+      <div class="pt">Optimizing deep learning models for fast and effective rust identification</div>
+      <div class="pa">I-Feng Huang, Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup>, Po-Han Chen, Luh-Maan Chang (2026)</div>
+      <div class="pj">Journal of Asian Architecture and Building Engineering, 1–15</div>
+      <div class="pdoi"><a href="https://doi.org/10.1080/13467581.2026.2613492" target="_blank">https://doi.org/10.1080/13467581.2026.2613492</a></div>
+      <div class="tags"></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">Daylighting assessment of window layouts and architectural elements in early design stages</div>
+      <div class="pa">Cong Thanh Do, Nguyen Thi Thuy Dung, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2025)</div>
+      <div class="pj">Scientific Reports, 15, 39507</div>
+      <div class="pdoi"><a href="https://doi.org/10.1038/s41598-025-23389-x" target="_blank">https://doi.org/10.1038/s41598-025-23389-x</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal other">
+      <div class="pt">A Dynamic Digital Twin Framework for Sustainable Facility Management in a Smart Campus</div>
+      <div class="pa">Sattaya Manokeaw, Pattaraporn Khuwuthyakorn, <strong>Ying-Chieh Chan</strong>, Naruephorn Tengtrairat, Manissaward Jintapitak, Orawit Thinnukool, Chinnapat Buachart, Thepparit Sinthamrongruk, Thidarat Kridakorn Na Ayutthaya, Natee Suriyanon, Somjintana Kanangkaew, Damrongsak Rinchumphu (2025)</div>
+      <div class="pj">Technologies, 13, 439</div>
+      <div class="pdoi"><a href="https://doi.org/10.3390/technologies13100439" target="_blank">https://doi.org/10.3390/technologies13100439</a></div>
+      <div class="tags"><span class="pub-tag blue">Smart Buildings</span><span class="pub-tag green">Sustainability</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal other">
+      <div class="pt">Cluster analysis of consumer characteristics influencing willingness to pay for green buildings</div>
+      <div class="pa">Simeon Ingabo, Christian K. Bambang, Non Phichetkunbodee, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2025)</div>
+      <div class="pj">Journal of Science and Technology in Civil Engineering (JSTCE–HUCE), 19(3), 1–12</div>
+      <div class="pdoi"><a href="https://doi.org/10.31814/stce.huce2025-19(3)-01" target="_blank">https://doi.org/10.31814/stce.huce2025-19(3)-01</a></div>
+      <div class="tags"><span class="pub-tag green">Sustainability</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal energy">
+      <div class="pt">Impact of weather forecasting uncertainty on building thermal load predictions</div>
+      <div class="pa">Cong Thanh Do, Simeon Ingabo, Non Phichetkunbodee, Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2025)</div>
+      <div class="pj">Journal of Building Engineering, 111, 113366</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.jobe.2025.113366" target="_blank">https://doi.org/10.1016/j.jobe.2025.113366</a></div>
+      <div class="tags"><span class="pub-tag">Energy &amp; Thermal</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal iaq">
+      <div class="pt">Assessing the impact of kitchen hoods and ventilation openings on indoor air quality post-cooking</div>
+      <div class="pa">Shou-Wang Chen, Chao-Yen Chang, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2025)</div>
+      <div class="pj">Journal of Building Engineering, 100, 111721</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.jobe.2024.111721" target="_blank">https://doi.org/10.1016/j.jobe.2024.111721</a></div>
+      <div class="tags"><span class="pub-tag">IAQ</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal views">
+      <div class="pt">Contextual evaluation of the impact of dynamic urban window view content on view satisfaction</div>
+      <div class="pa">Simeon Ingabo, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2025)</div>
+      <div class="pj">Building and Environment, 267A, 112303</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2024.112303" target="_blank">https://doi.org/10.1016/j.buildenv.2024.112303</a></div>
+      <div class="tags"><span class="pub-tag">Window Views</span></div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Journal Articles — 2023–2024</div>
+
+    <div class="pub-item" data-tags="journal microclimate energy">
+      <div class="pt">Sensitivity analysis of building material, ground material, and tree parameters in microclimate simulations</div>
+      <div class="pa">Anh-Vu Le, Oi-Man Hip, Shun-Yu Yang, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2024)</div>
+      <div class="pj">Urban Climate, 58, 102184</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.uclim.2024.102184" target="_blank">https://doi.org/10.1016/j.uclim.2024.102184</a></div>
+      <div class="tags"><span class="pub-tag purple">Urban Microclimate</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal views">
+      <div class="pt">Is Virtual Reality an Effective Experimental Tool for Window View Studies with Dynamic Content Involved?</div>
+      <div class="pa">Simeon Ingabo, Gan-Quan Sheng, Lin-Na Chiang, Wei-Che Yen, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2024)</div>
+      <div class="pj">Leukos, 1–24</div>
+      <div class="pdoi"><a href="https://doi.org/10.1080/15502724.2024.2358791" target="_blank">https://doi.org/10.1080/15502724.2024.2358791</a></div>
+      <div class="tags"><span class="pub-tag">Window Views</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal views">
+      <div class="pt">Evaluating the impact of bird collisions prevention glazing pattern design on window views</div>
+      <div class="pa">Gan-Quan Sheng, Simeon Ingabo, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2024)</div>
+      <div class="pj">Building and Environment, 259, 111657</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2024.111657" target="_blank">https://doi.org/10.1016/j.buildenv.2024.111657</a></div>
+      <div class="tags"><span class="pub-tag">Window Views</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal iaq">
+      <div class="pt">Effects of Window Position and Exhaust Flow Rate on Residential Kitchen Hood Performance</div>
+      <div class="pa">Yi-An Lin, <strong>Ying-Chieh Chan</strong>, Wan-Chen Lee (2024)</div>
+      <div class="pj">Indoor Air, 2024, 8834373</div>
+      <div class="pdoi"><a href="https://doi.org/10.1155/2024/8834373" target="_blank">https://doi.org/10.1155/2024/8834373</a></div>
+      <div class="tags"><span class="pub-tag">IAQ</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal energy daylight">
+      <div class="pt">A simulation-based workflow to calculate overall thermal transfer value when implementing daylighting-oriented shading control</div>
+      <div class="pa">Nguyen Thi Khanh Phuong, <strong>Ying-Chieh Chan</strong>, Cong Thanh Do, Nguyen Anh Tuan, Damrongsak Rinchumphu (2024)</div>
+      <div class="pj">Journal of Building Engineering, 84, 108616</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.jobe.2024.108616" target="_blank">https://doi.org/10.1016/j.jobe.2024.108616</a></div>
+      <div class="tags"><span class="pub-tag">Energy &amp; Thermal</span><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal microclimate">
+      <div class="pt">The potential of a tree to increase comfort hours in campus public space design</div>
+      <div class="pa">Kongkoon Tochaiwat, Damrongsak Rinchumphu, Chawanat Sundaranaga, Nakarin Pomsurin, Chatchawan Chaichana, Pattaraporn Khuwuthyakorn, Non Phichetkunbodee, <strong>Ying-Chieh Chan</strong> (2023)</div>
+      <div class="pj">Energy Reports, 9, 184–193</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.egyr.2023.05.258" target="_blank">https://doi.org/10.1016/j.egyr.2023.05.258</a></div>
+      <div class="tags"><span class="pub-tag purple">Urban Microclimate</span><span class="pub-tag green">Sustainability</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">Selection of spatial sensitivity curve and installation location of photosensors for daylight-linked control systems</div>
+      <div class="pa">Cong Thanh Do, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup>, Nguyen Thi Khanh Phuong (2023)</div>
+      <div class="pj">Building and Environment, 230, 109984</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2023.109984" target="_blank">https://doi.org/10.1016/j.buildenv.2023.109984</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Journal Articles — 2020–2022</div>
+
+    <div class="pub-item" data-tags="journal views">
+      <div class="pt">Evaluation of window view preference using quantitative and qualitative factors of window view content</div>
+      <div class="pa">Tsung-Yung Lin, Anh-Vu Le, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2022)</div>
+      <div class="pj">Building and Environment, 213, 108886</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2022.108886" target="_blank">https://doi.org/10.1016/j.buildenv.2022.108886</a></div>
+      <div class="tags"><span class="pub-tag">Window Views</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal other">
+      <div class="pt">Real-time indoor localization with visual SLAM for in-building emergency response</div>
+      <div class="pa">Po-Yen Tseng, Jacob J. Lin, <strong>Ying-Chieh Chan</strong>, Albert Y. Chen (2022)</div>
+      <div class="pj">Automation in Construction, 140, 104319</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.autcon.2022.104319" target="_blank">https://doi.org/10.1016/j.autcon.2022.104319</a></div>
+      <div class="tags"></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">Daylighting performance analysis of a facade combining daylight-redirecting window film and automated roller shade</div>
+      <div class="pa">Cong Thanh Do, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2021)</div>
+      <div class="pj">Building and Environment, 191, 107596</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2021.107596" target="_blank">https://doi.org/10.1016/j.buildenv.2021.107596</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal energy">
+      <div class="pt">Experimental Evaluation of Solar Radiation and Solar Efficacy Models and Performance of Data-Driven Models</div>
+      <div class="pa">Cong Thanh Do, Hui Shen, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup>, Xiaoyu Liu (2021)</div>
+      <div class="pj">Journal of Architectural Engineering, 27(1)</div>
+      <div class="pdoi"><a href="https://doi.org/10.1061/(ASCE)AE.1943-5568.0000449" target="_blank">https://doi.org/10.1061/(ASCE)AE.1943-5568.0000449</a></div>
+      <div class="tags"><span class="pub-tag">Energy &amp; Thermal</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">Evaluation of the effectiveness of a multi-sectional facade with Venetian blinds and roller shades with automated shading control strategies</div>
+      <div class="pa">Cong Thanh Do, <strong>Ying-Chieh Chan</strong><sup style="color:var(--amber);font-weight:700;">*</sup> (2020)</div>
+      <div class="pj">Solar Energy, 212, 241–257</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.solener.2020.11.003" target="_blank">https://doi.org/10.1016/j.solener.2020.11.003</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Journal Articles — Purdue Era (2012–2016)</div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">Estimating detailed optical properties of window shades from basic available data and modeling implications on daylighting and visual comfort</div>
+      <div class="pa">Athanasios Tzempelikos, <strong>Ying-Chieh Chan</strong> (2016)</div>
+      <div class="pj">Energy and Buildings, 126, 397–401</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.enbuild.2016.05.038" target="_blank">https://doi.org/10.1016/j.enbuild.2016.05.038</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal views daylight">
+      <div class="pt">View clarity index: A new metric to evaluate clarity of view through window shades</div>
+      <div class="pa">Iason Konstantzos, <strong>Ying-Chieh Chan</strong>, Julia C. Seibold, Athanasios Tzempelikos, Robert W. Proctor, J. Brent Protzman (2015)</div>
+      <div class="pj">Building and Environment, 90, 206–214</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2015.04.005" target="_blank">https://doi.org/10.1016/j.buildenv.2015.04.005</a></div>
+      <div class="tags"><span class="pub-tag">Window Views</span><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">Experimental and simulation analysis of daylight glare probability in offices with dynamic window shades</div>
+      <div class="pa">Iason Konstantzos, Athanasios Tzempelikos, <strong>Ying-Chieh Chan</strong> (2015)</div>
+      <div class="pj">Building and Environment, 87, 244–254</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.buildenv.2015.02.007" target="_blank">https://doi.org/10.1016/j.buildenv.2015.02.007</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">A systematic method for selecting roller shade properties for glare protection</div>
+      <div class="pa"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos, Iason Konstantzos (2015)</div>
+      <div class="pj">Energy and Buildings, 92, 81–94</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.enbuild.2015.01.057" target="_blank">https://doi.org/10.1016/j.enbuild.2015.01.057</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">Efficient venetian blind control strategies considering daylight utilization and glare protection</div>
+      <div class="pa"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos (2013)</div>
+      <div class="pj">Solar Energy, 98, 241–254</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.solener.2013.10.005" target="_blank">https://doi.org/10.1016/j.solener.2013.10.005</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal energy">
+      <div class="pt">Analysis and Comparison of Absorbed Solar Gain Distribution Models in Perimeter Building Zones</div>
+      <div class="pa"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos (2013)</div>
+      <div class="pj">ASHRAE Transactions, 119(2), 1–17</div>
+      <div class="tags"><span class="pub-tag">Energy &amp; Thermal</span></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal daylight">
+      <div class="pt">A hybrid ray-tracing and radiosity method for calculating radiation transport and illuminance distribution in spaces with venetian blinds</div>
+      <div class="pa"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos (2012)</div>
+      <div class="pj">Solar Energy, 86(11), 3109–3124</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.solener.2012.07.021" target="_blank">https://doi.org/10.1016/j.solener.2012.07.021</a></div>
+      <div class="tags"><span class="pub-tag">Daylighting</span></div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Journal Articles — Undergraduate Era (2008–2011)</div>
+
+    <div class="pub-item" data-tags="journal other">
+      <div class="pt">Development of Virtual Equipment — A Case Study of Venturi Tube Experiment</div>
+      <div class="pa">Shih-Chung Kang, <strong>Ying-Chieh Chan</strong>, Chiao-Yun Lu, Jihn-Sung Lai, Tim-Hau Lee (2013)</div>
+      <div class="pj">Journal of Professional Issues in Engineering Education and Practice, 139(4), 281–289</div>
+      <div class="pdoi"><a href="https://doi.org/10.1061/(ASCE)EI.1943-5541.0000158" target="_blank">https://doi.org/10.1061/(ASCE)EI.1943-5541.0000158</a></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal other">
+      <div class="pt">Development of a 3D Virtual Environment for Improving Public Participation</div>
+      <div class="pa">Jihn-Sung Lai, Wen-Yi Chang, <strong>Ying-Chieh Chan</strong>, Shih-Chung Kang, Yih-Chi Tan (2011)</div>
+      <div class="pj">Advanced Engineering Informatics, 25(2), 208–223</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/j.aei.2010.05.008" target="_blank">https://doi.org/10.1016/j.aei.2010.05.008</a></div>
+    </div>
+
+    <div class="pub-item" data-tags="journal other">
+      <div class="pt">Development of Virtual Equipment for a Hydraulic Mechanics Experiment</div>
+      <div class="pa"><strong>Ying-Chieh Chan</strong>, Ya-Hsin Chen, Shih-Chung Kang, Tim-Hau Lee (2008)</div>
+      <div class="pj">Tsinghua Science and Technology, 13, 261–265</div>
+      <div class="pdoi"><a href="https://doi.org/10.1016/S1007-0214(08)70159-7" target="_blank">https://doi.org/10.1016/S1007-0214(08)70159-7</a></div>
+    </div>
+
+  </div>
+
+  <!-- CONFERENCE PAPERS -->
+  <div class="pub-section" data-cat="conference">
+
+    <div class="pub-section-title">International Conference Papers — 2024–2025</div>
+
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Clustering-based Framework for Large Urban Studies: A Case Study in Taipei City</div>
+      <div class="cv">Non Phichetkunbodee, Damrongsak Rinchumphu, <strong>Ying-Chieh Chan</strong> · Building Simulation 2025, Brisbane, Australia</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Evaluating Bikeability in Taipei City – Key Factors and Insights from GIS, Online Surveys, and Interviews</div>
+      <div class="cv">Chau, T.N.M., <strong>Ying-Chieh Chan</strong> · 31st Annual Conference of ISDRS, Budapest, Hungary, June 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference iaq">
+      <div class="ct">Assessing the Impact of Kitchen Layouts and Ventilation Openings on Indoor Air Quality</div>
+      <div class="cv">Chao-Yen Chang, Shou-Wang Chen, <strong>Ying-Chieh Chan</strong> · COBEE 2025, Eindhoven, Netherlands</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Semi-Automated Pedestrian Verandas Quality Assessments</div>
+      <div class="cv">Wei-Che Yen, <strong>Ying-Chieh Chan</strong> · EASEC-18, Chiang Mai, Thailand, November 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Understanding the Impact of Weather Conditions on Transportation Mode Choices in Taiwan</div>
+      <div class="cv">Non Phichetkunbodee, Damrongsak Rinchumphu, Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · EASEC-18, November 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">Analysis of Factors Influencing Residents' Perceptions Regarding Potential Increases in Electricity Prices in Residential Buildings</div>
+      <div class="cv">Christian K. Bambang, Anh-Vu Le, Non Phichetkunbodee, Simeon N. Ingabo, et al., <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">Impact of Lifestyle Changes on Energy Consumption in Research Buildings</div>
+      <div class="cv">Simeon N. Ingabo, Anh-Vu Le, Christian K. Bambang, et al., <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver</div>
+    </div>
+    <div class="conf-item" data-tags="conference views">
+      <div class="ct">Decomposition of Dynamic Window Views Using Semantic Segmentation</div>
+      <div class="cv">Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">International Conference Papers — 2018–2023</div>
+
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Investigating the Role of Urban Parks Types as Microclimate Modifiers to Outdoor Thermal Comfort</div>
+      <div class="cv">Anh-Vu Le, <strong>Ying-Chieh Chan</strong> · 34th KKHTCNN Symposium, Pattaya, Thailand, November 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Comparison between ENVI-met and Ansys-Fluent when used for microclimate simulation</div>
+      <div class="cv">Anh-Vu Le, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne, Switzerland</div>
+    </div>
+    <div class="conf-item" data-tags="conference iaq">
+      <div class="ct">The benefit of kitchen exhaust fan uses after cooking – A CFD assessment</div>
+      <div class="cv">Shou-Wang Chen, Chao-Yen Chang, Wan-Chen Lee, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">Development of personalized predicted mean vote based on a real time clothing insulation recognition system</div>
+      <div class="cv">Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Impact of Different Urban Design Parameters on Pedestrian Thermal and Visual Perception</div>
+      <div class="cv">Christian K. Bambang, Anh-Vu Le, <strong>Ying-Chieh Chan</strong> · 33rd KKHTCNN Symposium, Singapore, November 2022</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy daylight">
+      <div class="ct">Model Evaluation and Development for Global and Diffuse Luminous Efficacy Models</div>
+      <div class="cv">Cong Thanh Do, Hui Shen, <strong>Ying-Chieh Chan</strong>, Xiaoyu Liu · Building Simulation 2019, Rome</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Development of a New Framework for Daylighting Simulation with Dynamic Shading Devices</div>
+      <div class="cv">Cong Thanh Do, <strong>Ying-Chieh Chan</strong> · 5th High Performance Buildings Conference at Purdue, July 2018</div>
+    </div>
+    <div class="conf-item" data-tags="conference iaq">
+      <div class="ct">Computational Analysis of Cross Ventilation for Classrooms with Operable Transom Windows</div>
+      <div class="cv">Chao-Yen Chang, <strong>Ying-Chieh Chan</strong> · 31st KKHTCNN Symposium, Kyoto, Japan, November 2018</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">International Conference Papers — 2012–2016 (Purdue era)</div>
+
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Daylighting and Energy Analysis of Offices with Multi-sectional Façades</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · International Building Physics Conference, Torino, June 2015</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Window Shades: Selecting Optical Properties for Visual Comfort</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · Building Simulation Applications, Bolzano, February 2015</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Impact of Solar Optical Properties of Roller Shades on Energy, Daylighting and Comfort</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos, J. Brent Protzman · ASHRAE Annual Conference, Atlanta, June 2014</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Annual Daylight Glare Evaluation for Typical Perimeter Offices: Simulation Models versus Full-Scale Experiments</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Iason Konstantzos, Athanasios Tzempelikos · ASHRAE Annual Conference, Seattle, June 2014</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Efficient Control Strategies for Venetian Blinds Considering Daylight Utilization and Glare</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · ISES Solar World Congress 2013, Cancun, Mexico</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Automated Blind Control Strategies for Improving Lighting Energy Performance While Ensuring Visual Comfort</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · CISBAT 2013, Lausanne</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy daylight">
+      <div class="ct">Impact of Shading Control and Thermostat Set Point Control in Buildings with Thermal Mass</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · Building Simulation 2013, Chambery, France</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Automated Blind Control Strategies for Improving Lighting Energy Performance — Best Student Paper Award</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · 2nd International High Performance Buildings Conference, Purdue, 2012</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2025 (29th SCEM)</div>
+
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">鋁模工法搭配預鑄工法在建築工程的應用——以社會住宅為例</div>
+      <div class="cv">傅籌瑩, <strong>Ying-Chieh Chan</strong>, 曾惠斌 · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">基於固碳與成本效益之城市綠化配置最佳化模型——以台北市為例</div>
+      <div class="cv">林禹芊, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">整合遊戲引擎與建築資訊模型以模擬建築室內光照環境之流程開發研究 — Outstanding Paper Award</div>
+      <div class="cv">鄭仲倫, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">設計階段建築結構碳排之不確定性估算</div>
+      <div class="cv">謝亭芸, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">室內裝修之噪音測量與模擬驗證</div>
+      <div class="cv">林曾浩, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">建築工地之噪音危害識別 — Excellent Paper Award</div>
+      <div class="cv">許豐榮, Lin-Na Chiang, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">平衡綠建築標章申請與車站舒適度之可行性研究——以捷運車站為例 — Excellent Paper Award</div>
+      <div class="cv">陳思穎, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference views">
+      <div class="ct">DynamicViews: A Dynamic Window View Quality Evaluation Tool Based on Video Semantic Segmentation — Outstanding Paper Award</div>
+      <div class="cv">Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Influence of Urban Morphological Parameters on Rooftop and Facade Solar Generation Potential — Outstanding Paper Award</div>
+      <div class="cv">Non Phichetkunbodee, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Comparative Analysis of Heat-Reflective Tile and Paint Materials for UHI Mitigation — Outstanding Paper Award</div>
+      <div class="cv">Javier Arevalo, Shun-Yu Yang, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Enhancing Daylighting Efficiency in Narrow Urban Buildings through Light Wells and Light Shelves</div>
+      <div class="cv">Dang Thuy Linh, Cong Thanh Do, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Variance-Based Sensitivity Analysis of Static Shading Devices on Daylighting and Heating and Cooling Loads</div>
+      <div class="cv">Pham Trung Duc, Cong Thanh Do, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Analyzing the Impact of Street Width on Urban Wind Corridor Performance</div>
+      <div class="cv">Aureley Pradipta, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2024 (28th SCEM)</div>
+
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">以減碳策略為基礎導入統包設計之研究——以某新建廠房為例</div>
+      <div class="cv">潘銘仁, 莊坤諺, <strong>Ying-Chieh Chan</strong>, 曾惠斌 · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy other">
+      <div class="ct">利用電動公車車隊與車聯網方法最佳化大台北地區電網能源管理之初探 — Excellent Paper Award</div>
+      <div class="cv">王竣平, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference views microclimate">
+      <div class="ct">基於全景圖像的視因子分析與街景評價指標及方法統整 — Excellent Paper Award</div>
+      <div class="cv">郭銘晉, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">教學型大樓碳管理功能單元探討</div>
+      <div class="cv">丁嘉靖, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference iaq other">
+      <div class="ct">建立室內裝修期間空氣品質連續監測之流程——TVOC、甲醛及懸浮微粒 — Excellent Paper Award</div>
+      <div class="cv">鍾岳璋, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">BIM 實務應用於探討降低建築工程碳排量</div>
+      <div class="cv">高志強, 曾惠斌, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Investigate the Influence of Pavement Properties on Microclimate in Taipei City — Outstanding Paper Award</div>
+      <div class="cv">Oi-Man Hip, Anh-Vu Le, Shun-Yu Yang, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Investigate the Influence of Different Reflection Wall Material on Microclimate</div>
+      <div class="cv">Shun-Yu Yang, Oi-Man Hip, Anh-Vu Le, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2023 (27th SCEM)</div>
+
+    <div class="conf-item" data-tags="conference views">
+      <div class="ct">評估防窗殺貼紙圖案設計對窗景的影響 — Outstanding Paper Award</div>
+      <div class="cv">顏騰涁, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">營建工程結構體主要材料碳排放量分析——以港灣工程為例</div>
+      <div class="cv">葉鳳鳴, 莊坤諺, <strong>Ying-Chieh Chan</strong>, 曾惠斌 · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">應用預測資料與不確定性之冰水主機群負載分配最佳化 — Outstanding Paper Award</div>
+      <div class="cv">林志璿, Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">半透明太陽能番茄溫室設計策略之研究</div>
+      <div class="cv">黎錦輝, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">以運動攝影機輔助台北市人行道環境評估</div>
+      <div class="cv">王柏喻, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">Assessing Embodied Carbon Emissions of Various Building Types in Indonesia using IO-LCA</div>
+      <div class="cv">Lin-Na Chiang, 曾惠斌, <strong>Ying-Chieh Chan</strong>, Tapsoba A.W. · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">A Comparative Analysis of the Influence of Taipei City Block Forms on Thermal Comfort</div>
+      <div class="cv">Anh-Vu Le, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">The BIM-based Approach for Evaluating Carbon Emissions in Retrofitting Buildings Envelope</div>
+      <div class="cv">Minh-Duc Le, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2022 (26th SCEM)</div>
+
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">不同鋪面對城市熱島效應和熱舒適性的影響 — Excellent Paper Award</div>
+      <div class="cv">曾睿, <strong>Ying-Chieh Chan</strong> · 26th SCEM, online, July 2022</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">新建建築對周圍建築的室內日照影響分析</div>
+      <div class="cv">林沂葶, <strong>Ying-Chieh Chan</strong> · 26th SCEM, online, July 2022</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">結合物聯網之智慧建築管理系統開發——以低功耗藍芽應用於室內定位系統為例</div>
+      <div class="cv">周昆儀, <strong>Ying-Chieh Chan</strong> · 26th SCEM, online, July 2022</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2021 (25th SCEM) &amp; Earlier</div>
+
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">Developing a BIM Plug-in to Support Green Building Certification for Materials and Resources — Best Paper Award</div>
+      <div class="cv">Ngo Xuan Quyet, <strong>Ying-Chieh Chan</strong> · TCI Concrete Conference, Kaohsiung, November 2021</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">Construction Site Workspace Planning, Conflict Detection and Resolution: The Gap between Academic Research and Practice</div>
+      <div class="cv">Tapsoba A.W., <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">Load Prediction for an Ice Storage System Under Weather Forecast</div>
+      <div class="cv">Kuan-Chun Shih, 林志璿, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">應用影像辨識分析挖土機之行為模式及其產值 — Excellent Paper Award</div>
+      <div class="cv">吳勻棠, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">老舊公寓大樓未成立管理組織之原因探討 — Excellent Paper Award</div>
+      <div class="cv">賴冠帆, 郭紀子, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">實時空調能耗預測模擬與預測控制 — Best Paper Award</div>
+      <div class="cv">蔣星宇, <strong>Ying-Chieh Chan</strong> · 22nd SCEM, Taipei, July 2018</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>© 2026 Ying-Chieh Chan · Department of Civil Engineering, National Taiwan University</footer>
+
+<script>
+  function filterPubs(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const allItems = document.querySelectorAll('.pub-item, .conf-item');
+    const allSections = document.querySelectorAll('.pub-section');
+    const allTitles = document.querySelectorAll('.pub-section-title');
+
+    if (cat === 'all') {
+      allItems.forEach(el => el.style.display = '');
+      allSections.forEach(s => s.style.display = '');
+      allTitles.forEach(t => t.style.display = '');
+      return;
+    }
+    if (cat === 'journal') {
+      document.querySelectorAll('.pub-section[data-cat="journal"]').forEach(s => s.style.display = '');
+      document.querySelectorAll('.pub-section[data-cat="conference"]').forEach(s => s.style.display = 'none');
+      document.querySelectorAll('.pub-item').forEach(el => el.style.display = '');
+      allTitles.forEach(t => t.style.display = '');
+      return;
+    }
+    if (cat === 'conference') {
+      document.querySelectorAll('.pub-section[data-cat="journal"]').forEach(s => s.style.display = 'none');
+      document.querySelectorAll('.pub-section[data-cat="conference"]').forEach(s => s.style.display = '');
+      allTitles.forEach(t => t.style.display = '');
+      return;
+    }
+
+    allSections.forEach(s => s.style.display = '');
+    allItems.forEach(el => {
+      const tags = el.dataset.tags || '';
+      el.style.display = tags.includes(cat) ? '' : 'none';
+    });
+
+    allTitles.forEach(title => {
+      let next = title.nextElementSibling;
+      let anyVisible = false;
+      while (next && !next.classList.contains('pub-section-title')) {
+        if (next.style.display !== 'none' && (next.classList.contains('pub-item') || next.classList.contains('conf-item'))) {
+          anyVisible = true; break;
+        }
+        next = next.nextElementSibling;
+      }
+      title.style.display = anyVisible ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

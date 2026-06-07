@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Group — Ying-Chieh Chan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f2744; --blue: #1a56c4; --blue-dim: #e8eef9;
+      --white: #ffffff; --gray: #4b5563; --gray-light: #f8f9fb;
+      --border: #e2e6ec; --dark: #0d1b2e; --muted: #8492a6;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray); line-height: 1.65; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 7%; height: 56px;
+    }
+    .brand { font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; color: #fff; text-decoration: none; text-transform: uppercase; }
+
+    /* PAGE HEADER */
+    .page-header { padding: 96px 7% 40px; border-bottom: 1px solid var(--border); background: var(--white); }
+    .page-header-inner { max-width: 960px; margin: 0 auto; }
+    .kicker { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+    .page-header h1 { font-size: 1.8rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.02em; }
+    .page-header p { font-size: 0.875rem; color: var(--muted); max-width: 580px; line-height: 1.6; }
+
+    /* JUMP NAV */
+    .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 7%; position: sticky; top: 56px; z-index: 100; }
+    .jump-bar-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+    .jump-btn { padding: 13px 16px; font-size: 0.77rem; font-weight: 500; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; text-decoration: none; display: block; transition: color .2s, border-color .2s; }
+    .jump-btn:hover { color: var(--navy); border-bottom-color: var(--navy); }
+
+    /* CONTENT */
+    .content { max-width: 960px; margin: 0 auto; padding: 44px 7% 80px; }
+
+    /* SECTION HEADER */
+    .group-section { margin-bottom: 52px; }
+    .group-section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .group-section-header::after { content: ''; display: block; width: 32px; height: 2px; background: var(--navy); margin-bottom: -11px; }
+    .group-section-header h2 { font-size: 1.3rem; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; }
+    .group-section-header .count { font-size: 0.78rem; color: var(--muted); }
+
+    /* ROLE HEADER */
+    .role-label { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin: 24px 0 10px; }
+
+    /* MEMBER CARD */
+    .member-grid { display: flex; flex-direction: column; gap: 6px; }
+    .member-card {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 14px 18px; display: flex; align-items: flex-start; gap: 16px;
+      transition: border-color .15s;
+    }
+    .member-card:hover { border-color: #b8c5d6; }
+    .member-info { flex: 1; }
+    .member-name { font-weight: 600; color: var(--dark); font-size: 0.9rem; }
+    .member-name-sub { font-size: 0.81rem; color: var(--muted); margin-left: 6px; font-weight: 400; }
+    .member-topic { font-size: 0.81rem; color: var(--gray); line-height: 1.5; margin-top: 3px; }
+    .member-note { font-size: 0.77rem; color: var(--muted); margin-top: 2px; }
+    .co-tag { font-size: 0.67rem; font-weight: 600; color: var(--muted); background: var(--gray-light); border: 1px solid var(--border); padding: 1px 7px; margin-left: 6px; white-space: nowrap; letter-spacing: 0.02em; }
+    .co-note { font-size: 0.77rem; color: var(--muted); font-style: italic; margin-top: 3px; }
+
+    /* ALUMNI CARD */
+    .alumni-card {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 14px 18px; margin-bottom: 5px;
+      display: grid; grid-template-columns: 180px 1fr auto; gap: 16px; align-items: start;
+      transition: border-color .15s;
+    }
+    .alumni-card:hover { border-color: #b8c5d6; }
+    .alumni-name { font-weight: 600; color: var(--dark); font-size: 0.875rem; line-height: 1.4; }
+    .alumni-name-cn { font-size: 0.77rem; color: var(--muted); display: block; margin-top: 1px; }
+    .alumni-thesis { font-size: 0.81rem; color: var(--gray); line-height: 1.5; font-style: italic; }
+    .alumni-year { font-size: 0.77rem; font-weight: 700; color: var(--blue); white-space: nowrap; padding-top: 2px; }
+    .alumni-degree { font-size: 0.67rem; color: var(--muted); margin-top: 2px; }
+
+    /* UNDERGRAD */
+    .ug-alumni-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ug-chip { background: var(--white); border: 1px solid var(--border); padding: 5px 12px; font-size: 0.81rem; color: var(--gray); }
+
+    footer { background: #070e1a; text-align: center; padding: 16px; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+    @media (max-width: 640px) {
+      .alumni-card { grid-template-columns: 1fr; gap: 6px; }
+      .alumni-year { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav style="background:#0f2744;border-bottom:none;">
+  <a class="brand" style="color:#fff;font-family:Inter,sans-serif;font-weight:700;font-size:0.88rem;letter-spacing:0.04em;text-transform:uppercase;" href="index.html">Ying-Chieh Chan</a>
+  <ul style="list-style:none;display:flex;gap:24px;">
+    <li><a href="index.html#research" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Research</a></li>
+    <li><a href="index.html#education" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Education</a></li>
+    <li><a href="publications.html" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Publications</a></li>
+    <li><a href="index.html#awards" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Awards</a></li>
+    <li><a href="group.html" style="color:#fff;text-decoration:none;font-size:0.77rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">Group</a></li>
+    <li><a href="index.html#contact" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="kicker">Building Science Lab · NTU Civil Engineering</p>
+    <h1>Research Group</h1>
+    <p>Our group works on the intersection of buildings, people, and environment — from daylighting and window views to urban microclimate and building energy. We welcome motivated students with interests in building physics, simulation, and sustainability.</p>
+  </div>
+</div>
+
+<div class="jump-bar">
+  <div class="jump-bar-inner">
+    <a class="jump-btn" href="#current">Current Members</a>
+    <a class="jump-btn" href="#alumni-phd">PhD Alumni</a>
+    <a class="jump-btn" href="#alumni-master">Master's Alumni</a>
+    <a class="jump-btn" href="#alumni-undergrad">Undergrad Alumni</a>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- CURRENT MEMBERS -->
+  <div class="group-section" id="current">
+    <div class="group-section-header">
+      <h2>Current Members</h2>
+    </div>
+
+    <div class="role-label">Postdoctoral Researcher</div>
+    <div class="member-grid">
+      <div class="member-card">
+        <div class="member-info">
+          <div><span class="member-name">Simeon N. Ingabo</span></div>
+          <div class="member-topic">Window view quality evaluation; ray-casting and semantic segmentation for occupant-perspective view analysis; dynamic view content and satisfaction.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-label" style="margin-top:20px;">Ph.D. Students</div>
+    <div class="member-grid">
+      <div class="member-card">
+        <div class="member-info">
+          <div><span class="member-name">Chao-Yen Chang</span> <span class="member-name-sub">張肇晏</span></div>
+          <div class="member-topic">Kitchen indoor air quality; pollutant dispersion and ventilation strategies in residential cooking environments.</div>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-info">
+          <div><span class="member-name">I-Feng Huang</span> <span class="member-name-sub">黃一峰</span></div>
+          <div class="member-topic">Deep learning-based building inspection; rust and defect identification.</div>
+          <div class="co-note">Co-advisor: Po-Han Chen</div>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-info">
+          <div><span class="member-name">Lin-Na Chiang</span> <span class="member-name-sub">蔣玲娜</span></div>
+          <div class="member-topic">Embodied carbon assessment; life-cycle environmental impact of buildings.</div>
+          <div class="co-note">Primary advisor: 曾惠斌 (Chan co-advises)</div>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-info">
+          <div><span class="member-name">Kuan-Chun Shih</span> <span class="member-name-sub">施冠群</span></div>
+          <div class="member-topic">Thermal comfort modeling; personalized PMV with clothing insulation recognition; ice storage system load prediction.</div>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-info">
+          <div><span class="member-name">Non Phichetkunbodee</span></div>
+          <div class="member-topic">Urban solar generation potential; rooftop and façade PV; urban morphology analysis; green building willingness-to-pay.</div>
+        </div>
+      </div>
+      <div class="member-card">
+        <div class="member-info">
+          <div><span class="member-name">Trong-Tin Tran</span></div>
+          <div class="member-topic">Building energy and daylighting performance.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-label" style="margin-top:20px;">Master's Students</div>
+    <div class="member-grid">
+      <div class="member-card"><div class="member-info"><div><span class="member-name">Shun-Yu Yang</span> <span class="member-name-sub">楊舜宇</span></div><div class="member-topic">Urban microclimate; heat-reflective materials and UHI mitigation.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">林曾浩</span></div><div class="member-topic">Indoor acoustics; construction noise monitoring and simulation.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">謝亭芸</span></div><div class="member-topic">Embodied carbon estimation under design-phase uncertainty.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">鄭仲倫</span></div><div class="member-topic">Game engine and BIM integration for indoor lighting simulation.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">林禹芊</span></div><div class="member-topic">Urban greening optimization for carbon sequestration and cost-benefit.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">Aureley Pradipta</span> <span class="member-name-sub">陳晶慧</span></div><div class="member-topic">Urban wind corridor and street width effects on ventilation.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">Oi-Man Hip</span> <span class="member-name-sub">叶藹雯</span></div><div class="member-topic">Urban microclimate; pavement material effects on outdoor thermal comfort.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">湯坤泰</span></div><div class="member-topic">Outdoor thermal comfort; urban heat environment assessment.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">吳祐欣</span></div><div class="member-topic">Indoor thermal comfort; portable measurement systems for personal thermal environment monitoring.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">陳伯翰</span></div><div class="member-topic">Vehicle-to-grid (V2G) technology acceptance; user adoption and behavioral factors in smart energy systems.</div></div></div>
+      <div class="member-card"><div class="member-info"><div><span class="member-name">廖紹凱</span></div><div class="member-topic">Walkability assessment; pedestrian environment quality and urban mobility.</div></div></div>
+    </div>
+
+    <div class="role-label" style="margin-top:20px;">Undergraduate Students</div>
+    <div class="member-grid">
+      <div class="member-card"><div class="member-info"><span class="member-name">陳姿宜</span></div></div>
+      <div class="member-card"><div class="member-info"><span class="member-name">黃意捷</span></div></div>
+      <div class="member-card"><div class="member-info"><span class="member-name">張家境</span></div></div>
+      <div class="member-card"><div class="member-info"><span class="member-name">Javier Arevalo</span></div></div>
+    </div>
+  </div>
+
+  <!-- PhD ALUMNI -->
+  <div class="group-section" id="alumni-phd">
+    <div class="group-section-header">
+      <h2>Ph.D. Alumni</h2>
+    </div>
+
+    <div class="alumni-card">
+      <div>
+        <div class="alumni-name">Simeon N. Ingabo</div>
+        <div class="alumni-degree">Ph.D. · Civil Engineering, NTU · Now: Postdoctoral Researcher, NTU</div>
+      </div>
+      <div class="alumni-thesis">—</div>
+      <div class="alumni-year">—<br/><span style="font-weight:400;color:var(--muted);">PhD</span></div>
+    </div>
+    <div class="alumni-card">
+      <div>
+        <div class="alumni-name">Cong Thanh Do <span class="alumni-name-cn">杜成功</span> <a href="https://vn.linkedin.com/in/congthanhdo" target="_blank" style="font-size:0.72rem;font-weight:500;color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber-bg);margin-left:6px;">LinkedIn</a></div>
+        <div class="alumni-degree">Ph.D. · Civil Engineering, NTU · Now: Lecturer, Hanoi University of Civil Engineering (HUCE)</div>
+      </div>
+      <div class="alumni-thesis">Daylighting Performance Analysis of Dynamic Complex Fenestration Systems</div>
+      <div class="alumni-year">2021<br/><span style="font-weight:400;color:var(--muted);">PhD</span></div>
+    </div>
+
+    <div class="alumni-card">
+      <div>
+        <div class="alumni-name">Anh-Vu Le <span class="alumni-name-cn">黎英武</span> <a href="https://www.linkedin.com/in/anh-vu-le-313390180/" target="_blank" style="font-size:0.72rem;font-weight:500;color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber-bg);margin-left:6px;">LinkedIn</a></div>
+        <div class="alumni-degree">Ph.D. · Civil Engineering, NTU · Now: Lecturer, Hanoi University of Civil Engineering (HUCE)</div>
+      </div>
+      <div class="alumni-thesis">The Influence of Urban Design on Urban Microclimate and Livability</div>
+      <div class="alumni-year">2024<br/><span style="font-weight:400;color:var(--muted);">PhD</span></div>
+    </div>
+  </div>
+
+  <!-- Master's ALUMNI -->
+  <div class="group-section" id="alumni-master">
+    <div class="group-section-header">
+      <h2>Master's Alumni</h2>
+      <span class="count">40+ graduates</span>
+    </div>
+
+    <!-- 2025–2026 -->
+    <div class="role-label">2025–2026</div>
+
+    <div class="alumni-card">
+      <div><div class="alumni-name">Jin-Hui Li <span class="alumni-name-cn">黎錦輝</span></div></div>
+      <div class="alumni-thesis">A Study on the Design Strategies of Photovoltaic Greenhouses for Tomato Cultivation</div>
+      <div class="alumni-year">2026</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Tzu-Ting Peng <span class="alumni-name-cn">彭子庭</span></div></div>
+      <div class="alumni-thesis">Clothing Insulation Estimation for Thermal Comfort Model Using Image Recognition and Meteorological Data</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Chun-Pin Wang <span class="alumni-name-cn">王竣平</span></div></div>
+      <div class="alumni-thesis">Optimization Analysis of the Electric Bus V2G System Focused on Economic Feasibility</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Szu-Ying Chen <span class="alumni-name-cn">陳思穎</span></div></div>
+      <div class="alumni-thesis">Feasibility Study on Balancing Green Building Certification and Station Comfort: A Case Study of Metro Systems</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Feng-Jung Hsu <span class="alumni-name-cn">許豐榮</span></div></div>
+      <div class="alumni-thesis">Evaluation of Noise Hazards and Mitigation Feasibility in Construction Sites</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Hsiao-Ti Ma <span class="alumni-name-cn">馬小堤</span></div></div>
+      <div class="alumni-thesis">An Evaluation Study on Project Management Strategies in the Planning and Design Phase of Engineering Projects</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Wei-Che Yen <span class="alumni-name-cn">顏偉哲</span></div></div>
+      <div class="alumni-thesis">Evaluating Accessibility of Pedestrian Environment Through Technology-Assisted Assessments</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Ming-Ching Kuo <span class="alumni-name-cn">郭銘晉</span></div></div>
+      <div class="alumni-thesis">Evaluation of Urban Residential Streetscape Perception Based on Panoramic Imagery and Virtual Reality</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Truong Nhat Minh Chau</div></div>
+      <div class="alumni-thesis">Toward Taipei Bikeability: Integrating Survey-Based and GIS Approach in Road Infrastructure Assessment</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Dang Thuy Linh <span class="alumni-name-cn">鄧陲玲</span></div><div class="co-note">Co-advisor: Cong Thanh Do</div></div>
+      <div class="alumni-thesis">Enhancing Daylighting Efficiency in Narrow Urban Buildings through Light Wells and Light Shelves</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Pham Trung Duc <span class="alumni-name-cn">范忠德</span></div><div class="co-note">Co-advisor: Cong Thanh Do</div></div>
+      <div class="alumni-thesis">Variance-Based Sensitivity Analysis of Static Shading Devices on Daylighting and Heating and Cooling Loads</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Chou-Ying Fu <span class="alumni-name-cn">傅籌瑩</span></div><div class="co-note">Primary advisor: 曾惠斌 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">Application of Aluminum Formwork Combined with Precast Method in Construction Engineering: A Case Study of Social Housing</div>
+      <div class="alumni-year">2025</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">黃湘娟</div><div class="co-note">Primary advisor: 黃千芬 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">Optimizing Permutation Entropy Parameters for Enhanced Dolphin Whistle Detection</div>
+      <div class="alumni-year">2025</div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="role-label">2024</div>
+
+    <div class="alumni-card">
+      <div><div class="alumni-name">Christian K. Bambang <span class="alumni-name-cn">彭永椿</span></div></div>
+      <div class="alumni-thesis">Analysis of Factors Influencing Residents' Intentions Regarding Willingness to Pay for Better Environment: A Comparative Study Between Taiwan and Indonesia</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Chia-Ching Ting <span class="alumni-name-cn">丁嘉靖</span></div></div>
+      <div class="alumni-thesis">Exploration of the Functional Unit of the Lifecycle of Educational Buildings</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Yueh-Chang Chung <span class="alumni-name-cn">鍾岳璋</span></div></div>
+      <div class="alumni-thesis">Establishing a Continuous Air Quality Monitoring Process During Interior Renovation — TVOC, Formaldehyde, and Particulate Matter</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Tsung-Chieh Chen <span class="alumni-name-cn">陳宗傑</span></div></div>
+      <div class="alumni-thesis">Critical Path Management of High-Tech Power System Construction</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Nguyen Si Hieu <span class="alumni-name-cn">阮士孝</span></div></div>
+      <div class="alumni-thesis">Urban Form, Meteorological Factors, and Air Quality: An Analysis of PM2.5 Levels in Hanoi City</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Huy-Anh Cu <span class="alumni-name-cn">瞿輝英</span></div></div>
+      <div class="alumni-thesis">An Analysis Regarding the Awareness and Understanding of Green Building Materials Among Architects in Taiwan and Vietnam</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Shou-Wang Chen <span class="alumni-name-cn">陳守望</span></div></div>
+      <div class="alumni-thesis">Assessing Kitchen Air Quality: The Role of Natural Air Openings and Exhaust Hoods</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Zhi-Xuan Lin <span class="alumni-name-cn">林志璿</span></div></div>
+      <div class="alumni-thesis">Optimization of Chiller Loading with Predictive Data and Uncertainty</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Heng-Chia Chang <span class="alumni-name-cn">張恒嘉</span></div><div class="co-note">Primary advisor: 曾惠斌 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">Analysis on Opportunities and Risks of MRT Joint Development Project Investment</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Ming-Jen Pan <span class="alumni-name-cn">潘銘仁</span></div><div class="co-note">Primary advisor: 曾惠斌 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">A Study on Turnkey Design Project based on Carbon Reduction Strategy</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Chih-Chiang Kao <span class="alumni-name-cn">高志強</span></div><div class="co-note">Primary advisor: 曾惠斌 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">BIM Application to Reduce Carbon Emissions in Construction Projects</div>
+      <div class="alumni-year">2024</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">范佩瑜</div><div class="co-note">Primary advisor: 李婉甄 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">Evaluating the Impact Factors of Taiwanese Domestic Kitchen Hood Performance by Using Validated Computational Fluid Dynamics Models</div>
+      <div class="alumni-year">2024</div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="role-label">2023</div>
+
+    <div class="alumni-card">
+      <div><div class="alumni-name">Gan-Quan Sheng <span class="alumni-name-cn">顏騰涁</span></div></div>
+      <div class="alumni-thesis">Evaluating the Impact of Bird Collision Prevention Glazing Pattern Design on Window Views</div>
+      <div class="alumni-year">2023</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Po-Yu Wang <span class="alumni-name-cn">王柏喻</span></div></div>
+      <div class="alumni-thesis">Assessment of Taipei City Pedestrian Environment with Action Camera Assistance</div>
+      <div class="alumni-year">2023</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Minh-Duc Le <span class="alumni-name-cn">黎明德</span></div></div>
+      <div class="alumni-thesis">The BIM-Based Approach to Evaluating the Effectiveness of Energy Retrofit Assessed by Carbon Emission in Taiwan</div>
+      <div class="alumni-year">2023</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Yi-Ju Liao <span class="alumni-name-cn">廖逸如</span></div></div>
+      <div class="alumni-thesis">Improving Thermal Comfort in Negative Pressure Tunnel Ventilation Laying Hen House Equipped with Evaporative Cooling Pad Systems</div>
+      <div class="alumni-year">2023</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Cheng-Nan Lo <span class="alumni-name-cn">羅正男</span></div><div class="co-note">Primary advisor: 曾惠斌 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">Key Factors of Successful Landscape Design in Turnkey Projects</div>
+      <div class="alumni-year">2023</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Fong-Ming Yeh <span class="alumni-name-cn">葉鳳鳴</span></div><div class="co-note">Primary advisor: 曾惠斌 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">Analysis on the Carbon Emission of Structural Materials in Construction Projects — Harbor Engineering Case Study</div>
+      <div class="alumni-year">2023</div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="role-label">2022</div>
+
+    <div class="alumni-card">
+      <div><div class="alumni-name">Yi-Ting Lin <span class="alumni-name-cn">林沂葶</span></div></div>
+      <div class="alumni-thesis">The Impacts of New Construction on the Indoor Daylight of Nearby Buildings</div>
+      <div class="alumni-year">2022</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Rui Zeng <span class="alumni-name-cn">曾睿</span></div></div>
+      <div class="alumni-thesis">Influence of Different Pavements on Urban Heat Island Effect and Thermal Comfort</div>
+      <div class="alumni-year">2022</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Kun-I Chou <span class="alumni-name-cn">周昆儀</span></div></div>
+      <div class="alumni-thesis">Development of a Management System for IoT-Based Smart Buildings Using BLE for Indoor Positioning</div>
+      <div class="alumni-year">2022</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Ta Dang Huynh <span class="alumni-name-cn">謝登黃</span></div></div>
+      <div class="alumni-thesis">The Important Role of Construction Waste Management in Sustainable Development and a Proposal to Vietnam</div>
+      <div class="alumni-year">2022</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Achille Wendyam Tapsoba <span class="alumni-name-cn">艾家齊</span></div></div>
+      <div class="alumni-thesis">Construction Site Workspace Planning, Conflicts Detection, and Resolution in Retrofit Project</div>
+      <div class="alumni-year">2022</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Yi-An Lin <span class="alumni-name-cn">林怡安</span></div><div class="co-note">Primary advisor: 李婉甄 (Chan co-advises)</div></div>
+      <div class="alumni-thesis">Effects of Window Position and Exhaust Flow Rate on Residential Kitchen Hood Performance</div>
+      <div class="alumni-year">2022</div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="role-label">2021</div>
+
+    <div class="alumni-card">
+      <div><div class="alumni-name">Tsung-Yung Lin <span class="alumni-name-cn">林宗永</span></div></div>
+      <div class="alumni-thesis">A Study on the Correlation between Campus Window Composition and Mood Relaxation</div>
+      <div class="alumni-year">2021</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Kuan-Fan Lai <span class="alumni-name-cn">賴冠帆</span></div></div>
+      <div class="alumni-thesis">Key Reasons for Lacking Management Committee Among Old Residential Buildings and Strategy for Resolution</div>
+      <div class="alumni-year">2021</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Ngo Xuan Quyet <span class="alumni-name-cn">吳春決</span></div></div>
+      <div class="alumni-thesis">Developing a BIM Plug-in to Support Green Building Assessment for Materials and Resources According to LOTUS Standard</div>
+      <div class="alumni-year">2021</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Yun-Tang Wu <span class="alumni-name-cn">吳勻棠</span></div></div>
+      <div class="alumni-thesis">Application of Image Recognition to Analyze Excavator Behavior Patterns and Productivity</div>
+      <div class="alumni-year">2021</div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="role-label">2020</div>
+
+    <div class="alumni-card">
+      <div><div class="alumni-name">Po-Yuan Chen <span class="alumni-name-cn">陳柏元</span></div></div>
+      <div class="alumni-thesis">Combining CFD and Thermal Comfort Analysis to Provide Occupants Guidance of Seat Selections in the Indoor Space</div>
+      <div class="alumni-year">2020</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Chun-Yen Cheng <span class="alumni-name-cn">鄭群嚴</span></div></div>
+      <div class="alumni-thesis">Fall Detection of Construction Site Safety: Using Deep Learning as a Tool</div>
+      <div class="alumni-year">2020</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Thanh Ngan Vu <span class="alumni-name-cn">武青銀</span></div></div>
+      <div class="alumni-thesis">Annual Daylight Performance Evaluation of Adaptive Facade Shading Systems</div>
+      <div class="alumni-year">2020</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Kenta Ikejiri <span class="alumni-name-cn">池尻謙太</span></div></div>
+      <div class="alumni-thesis">An Investigation of the Pervasive Potential of Wood-Plastic Composite (WPC) in the East Asia Pacific Region</div>
+      <div class="alumni-year">2020</div>
+    </div>
+
+    <!-- Earlier -->
+    <div class="role-label">2019 and earlier</div>
+
+    <div class="alumni-card">
+      <div><div class="alumni-name">Li-Te Huang <span class="alumni-name-cn">黃立德</span></div></div>
+      <div class="alumni-thesis">Development of Personalized Thermal Comfort Profiles and AC Control Strategies through Human-Building Interactions</div>
+      <div class="alumni-year">2019</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Tuan Anh Phan <span class="alumni-name-cn">潘俊英</span></div></div>
+      <div class="alumni-thesis">Integrated Energy Efficient Building Design Framework</div>
+      <div class="alumni-year">2019</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Duc Trung Huynh <span class="alumni-name-cn">黃德中</span></div></div>
+      <div class="alumni-thesis">Development of a Wind Direction Visualization Tool for Conceptual Design of Green Building</div>
+      <div class="alumni-year">2018</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Xing-Yu Jiang <span class="alumni-name-cn">蔣星宇</span></div></div>
+      <div class="alumni-thesis">Real-Time HVAC Energy Prediction and Predictive Control</div>
+      <div class="alumni-year">2018</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Cong Thanh Do <span class="alumni-name-cn">杜成功</span></div></div>
+      <div class="alumni-thesis">Development of a New Framework for Daylighting Simulation with Dynamic Shading Devices</div>
+      <div class="alumni-year">2017</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Xuan-Tung Hoang <span class="alumni-name-cn">黃春松</span></div></div>
+      <div class="alumni-thesis">Towards Net Zero Energy Buildings: BIPV and Its Impact on Indoor Environment for Hot Climate</div>
+      <div class="alumni-year">2017</div>
+    </div>
+    <div class="alumni-card">
+      <div><div class="alumni-name">Phuc Hung Nguyen <span class="alumni-name-cn">阮福興</span></div></div>
+      <div class="alumni-thesis">The Feasibility of Applying Phase Change Material in Building Structures in Vietnam</div>
+      <div class="alumni-year">2017</div>
+    </div>
+  </div>
+
+  <!-- UNDERGRAD ALUMNI -->
+  <div class="group-section" id="alumni-undergrad">
+    <div class="group-section-header">
+      <h2>Undergraduate Alumni</h2>
+    </div>
+    <div class="ug-alumni-grid">
+      <div class="ug-chip">陳冠宇</div>
+      <div class="ug-chip">易勻</div>
+      <div class="ug-chip">邱奕陽</div>
+      <div class="ug-chip">潘佳旻</div>
+      <div class="ug-chip">郭庭㚬</div>
+      <div class="ug-chip">陳妤華</div>
+      <div class="ug-chip">邱晨</div>
+      <div class="ug-chip">Orville Wang (王鉅盛)</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 Ying-Chieh Chan · Department of Civil Engineering, National Taiwan University</footer>
+</body>
+</html>

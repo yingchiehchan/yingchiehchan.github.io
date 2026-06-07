@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ying-Chieh Chan | Associate Professor, NTU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0f2744;
+      --blue:#1a56c4;
+      --blue-dim:#e8eef9;
+      --gray:#4b5563;
+      --gray-light:#f8f9fb;
+      --border:#e2e6ec;
+      --dark:#0d1b2e;
+      --white:#ffffff;
+      --muted:#8492a6;
+      --amber:#b45309;
+      --amber-bg:#fef3c7;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--white);color:var(--gray);line-height:1.65}
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:200;
+      background:var(--navy);height:56px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 7%;
+    }
+    .brand{color:#fff;font-weight:700;font-size:0.88rem;letter-spacing:0.04em;text-decoration:none;text-transform:uppercase}
+    nav ul{list-style:none;display:flex;gap:24px}
+    nav a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;transition:color .2s}
+    nav a:hover{color:#fff}
+
+    /* ── HERO ── */
+    #hero{padding:96px 7% 64px;border-bottom:1px solid var(--border);max-width:1060px;margin:0 auto}
+    .hero-grid{display:grid;grid-template-columns:168px 1fr;gap:52px;align-items:start}
+    .hero-photo{width:168px;height:202px;background:var(--gray-light);border:1px solid var(--border);overflow:hidden;border-radius:2px;flex-shrink:0}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:38% 35%}
+    .hero-eyebrow{font-size:0.71rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+    .hero-name{font-size:2.3rem;font-weight:700;color:var(--dark);letter-spacing:-0.03em;line-height:1.05;margin-bottom:5px}
+    .hero-title{font-size:0.875rem;color:var(--gray);margin-bottom:18px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+    .htag{font-size:0.71rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 10px;border:1px solid var(--border);color:var(--muted);border-radius:2px}
+    .hero-meta{display:flex;flex-direction:column;gap:5px}
+    .hero-meta a{font-size:0.83rem;color:var(--gray);text-decoration:none;transition:color .2s}
+    .hero-meta a:hover{color:var(--blue)}
+
+    /* ── SECTIONS ── */
+    .sec{padding:60px 7%;border-bottom:1px solid var(--border)}
+    .sec.alt{background:var(--gray-light)}
+    .sec-inner{max-width:1060px;margin:0 auto}
+    .sec-title{font-size:0.69rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+    .sec-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+    /* ── BIO ── */
+    .bio{font-size:0.94rem;color:var(--gray);line-height:1.8;max-width:700px;border-left:3px solid var(--navy);padding-left:18px}
+    .bio a{color:var(--blue);text-decoration:none}
+    .bio a:hover{text-decoration:underline}
+
+    /* ── RESEARCH GRID ── */
+    .research-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+    .rcard{background:var(--white);padding:24px 20px;cursor:pointer;transition:background .15s,transform .15s;position:relative}
+    .rcard:hover{background:var(--gray-light)}
+    .rcard-num{font-size:0.67rem;font-weight:700;letter-spacing:0.1em;color:var(--blue);margin-bottom:10px}
+    .rcard h3{font-size:0.9rem;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.35}
+    .rcard p{font-size:0.81rem;color:var(--gray);line-height:1.62}
+    .rcard-more{display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-size:0.75rem;font-weight:600;color:var(--blue)}
+    .rcard-more::after{content:'→';transition:transform .2s}
+    .rcard:hover .rcard-more::after{transform:translateX(3px)}
+
+    /* ── EDUCATION ── */
+    .edu-list{display:flex;flex-direction:column}
+    .edu-row{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--border)}
+    .edu-row:last-child{border:none}
+    .edu-yr{font-size:0.75rem;color:var(--muted);padding-top:3px;font-weight:500}
+    .edu-deg{font-weight:600;color:var(--dark);font-size:0.875rem;line-height:1.4}
+    .edu-uni{font-size:0.82rem;color:var(--gray);margin-top:2px}
+
+    /* ── PUBLICATIONS ── */
+    .pub-yr-bar{font-size:0.67rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin:24px 0 10px;padding-left:12px;border-left:2px solid var(--navy)}
+    .pub-item{padding:13px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 180px;gap:16px;align-items:start}
+    .pub-item:last-of-type{border:none}
+    .pub-title{font-size:0.86rem;font-weight:500;color:var(--dark);line-height:1.45}
+    .pub-authors{font-size:0.77rem;color:var(--muted);margin-top:3px}
+    .pub-authors strong{color:var(--dark)}
+    .pub-right{text-align:right}
+    .pub-journal{font-size:0.77rem;color:var(--blue);font-style:italic}
+    .pub-year{font-size:0.74rem;color:var(--muted);margin-top:2px}
+    .view-all{margin-top:20px}
+    .view-all a{
+      display:inline-block;padding:9px 20px;border:1.5px solid var(--navy);
+      font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;
+      color:var(--navy);text-decoration:none;transition:background .2s,color .2s;
+    }
+    .view-all a:hover{background:var(--navy);color:#fff}
+
+    /* ── AWARDS ── */
+    .award-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);border-left:1px solid var(--border)}
+    .aw-item{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 16px;display:flex;gap:14px}
+    .aw-yr{font-size:0.75rem;font-weight:700;color:var(--blue);min-width:54px;flex-shrink:0;padding-top:1px}
+    .aw-desc{font-size:0.83rem;color:var(--dark);line-height:1.45}
+
+    /* ── CONTACT ── */
+    #contact{background:var(--navy);padding:60px 7%}
+    #contact .sec-title{color:rgba(255,255,255,0.4);margin-bottom:28px}
+    #contact .sec-title::after{background:rgba(255,255,255,0.1)}
+    .contact-grid{max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px}
+    .cc{display:flex;flex-direction:column;gap:4px}
+    .cc-label{font-size:0.67rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+    .cc a,.cc p{color:rgba(255,255,255,0.75);font-size:0.875rem;text-decoration:none}
+    .cc a:hover{color:#fff}
+
+    /* ── MODAL ── */
+    .modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(13,27,46,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px}
+    .modal-overlay.open{display:flex}
+    .modal{background:var(--white);border-radius:4px;max-width:720px;width:100%;max-height:88vh;overflow-y:auto;padding:40px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
+    .modal-close{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--muted);line-height:1}
+    .modal-close:hover{color:var(--dark)}
+    .modal-kicker{font-size:0.69rem;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+    .modal h3{font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:16px;line-height:1.3;letter-spacing:-0.02em}
+    .modal-desc{font-size:0.89rem;color:var(--gray);line-height:1.8;margin-bottom:24px}
+    .modal-figure{width:100%;border-radius:3px;overflow:hidden;background:var(--gray-light);border:1px solid var(--border);margin-bottom:8px}
+    .modal-figure img{width:100%;display:block}
+    .modal-figure-placeholder{padding:32px 20px;text-align:center;color:var(--muted);font-size:0.82rem;line-height:1.6}
+    .modal-caption{font-size:0.77rem;color:var(--muted);font-style:italic;margin-bottom:24px;text-align:center}
+    .modal-pubs h4{font-size:0.68rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:8px}
+    .modal-pub-item{padding:11px 0;border-bottom:1px solid var(--border)}
+    .modal-pub-item:last-child{border:none}
+    .modal-pub-item .pt{font-size:0.86rem;font-weight:500;color:var(--dark);margin-bottom:3px;line-height:1.45}
+    .modal-pub-item .pj{font-size:0.78rem;color:var(--blue);font-style:italic}
+    .modal-pub-item .pa{font-size:0.76rem;color:var(--muted)}
+
+    footer{background:#070e1a;text-align:center;padding:16px;font-size:0.75rem;color:rgba(255,255,255,0.2)}
+
+    @media(max-width:768px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-photo{width:140px;height:168px}
+      .research-grid{grid-template-columns:1fr}
+      .award-grid{grid-template-columns:1fr}
+      nav ul{display:none}
+      .pub-item{grid-template-columns:1fr}
+      .pub-right{text-align:left}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="brand" href="#hero">Ying-Chieh Chan</a>
+  <ul>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="group.html">Group</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1060px;margin:0 auto">
+<section id="hero" style="max-width:none">
+  <div class="hero-grid">
+    <div class="hero-photo">
+      <img src="images/photo.jpg" alt="Ying-Chieh Chan"/>
+    </div>
+    <div>
+      <p class="hero-eyebrow">Associate Professor · NTU Civil Engineering</p>
+      <h1 class="hero-name">Ying-Chieh Chan</h1>
+      <p class="hero-title">Department of Civil Engineering, National Taiwan University &nbsp;·&nbsp; Room 705, New Civil Engineering Building</p>
+      <div class="hero-tags">
+        <span class="htag">Daylighting</span>
+        <span class="htag">Window Views</span>
+        <span class="htag">Building Energy</span>
+        <span class="htag">Thermal Comfort</span>
+        <span class="htag">Indoor Air Quality</span>
+      </div>
+      <div class="hero-meta">
+        <a href="mailto:ychan@ntu.edu.tw">ychan@ntu.edu.tw</a>
+        <a href="tel:+886233664332">+886-2-3366-4332</a>
+        <a href="https://scholar.google.com/citations?user=SIONlOgAAAAJ" target="_blank">Google Scholar</a>
+        <a href="https://orcid.org/0000-0002-4195-8739" target="_blank">ORCID 0000-0002-4195-8739</a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- BIO -->
+<div class="sec" style="border-bottom:1px solid var(--border)">
+  <div class="sec-inner">
+    <div class="sec-title">About</div>
+    <p class="bio">I am an Associate Professor in the <a href="https://www.ce.ntu.edu.tw" target="_blank">Department of Civil Engineering</a> at National Taiwan University, where I lead the Building Science Lab. My research focuses on the intersection of buildings, people, and environment — investigating how the built environment shapes occupant well-being and energy performance. I combine computational simulation, field measurement, and human-subject experiments to develop evidence-based design guidelines for sustainable, occupant-centered buildings. Current research areas include daylighting and automated shading control, window view quality, building thermal performance, indoor air quality, and urban microclimate.</p>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="sec" id="research">
+  <div class="sec-inner">
+    <div class="sec-title">Research Interests</div>
+    <div class="research-grid">
+
+      <div class="rcard" onclick="openModal('modal-views')">
+        <div class="rcard-num">01</div>
+        <h3>Window Views &amp; Visual Comfort</h3>
+        <p>Quantifying what makes a window view satisfying — nature content, VR experiments, and novel metrics including the View Clarity Index.</p>
+        <span class="rcard-more">Read more</span>
+      </div>
+
+      <div class="rcard" onclick="openModal('modal-daylight')">
+        <div class="rcard-num">02</div>
+        <h3>Daylighting &amp; Shading Control</h3>
+        <p>Automated venetian blind and roller shade strategies that balance daylight availability, glare protection, and building energy use.</p>
+        <span class="rcard-more">Read more</span>
+      </div>
+
+      <div class="rcard" onclick="openModal('modal-energy')">
+        <div class="rcard-num">03</div>
+        <h3>Building Thermal Performance</h3>
+        <p>Thermal load simulation, OTTV workflows, and the impact of weather forecast uncertainty on building energy predictions.</p>
+        <span class="rcard-more">Read more</span>
+      </div>
+
+      <div class="rcard" onclick="openModal('modal-iaq')">
+        <div class="rcard-num">04</div>
+        <h3>Indoor Air Quality</h3>
+        <p>Kitchen hood performance under varying ventilation configurations, combining simulation and field measurement.</p>
+        <span class="rcard-more">Read more</span>
+      </div>
+
+      <div class="rcard" onclick="openModal('modal-smart')">
+        <div class="rcard-num">05</div>
+        <h3>Urban Microclimate</h3>
+        <p>Simulation of how building materials, ground cover, and urban vegetation affect outdoor thermal comfort and pedestrian-level conditions.</p>
+        <span class="rcard-more">Read more</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="sec alt" id="education">
+  <div class="sec-inner">
+    <div class="sec-title">Education</div>
+    <div class="edu-list">
+      <div class="edu-row"><div class="edu-yr">2010–2015</div><div><div class="edu-deg">Ph.D. in Civil Engineering (Architectural Engineering Program)</div><div class="edu-uni">Purdue University, West Lafayette, IN</div></div></div>
+      <div class="edu-row"><div class="edu-yr">2009–2010</div><div><div class="edu-deg">M.S. in Civil and Environmental Engineering (Advanced Infrastructure Systems)</div><div class="edu-uni">Carnegie Mellon University, Pittsburgh, PA</div></div></div>
+      <div class="edu-row"><div class="edu-yr">2004–2008</div><div><div class="edu-deg">B.S. in Civil Engineering</div><div class="edu-uni">National Taiwan University, Taipei, Taiwan</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<div class="sec" id="publications">
+  <div class="sec-inner">
+    <div class="sec-title">Selected Publications</div>
+    <div class="pub-yr-bar">Recent Highlights</div>
+
+    <div class="pub-item">
+      <div><div class="pub-title">A ray-casting workflow for extraction of occupant perspective views from recorded window view footage</div><div class="pub-authors">Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong><sup style="color:var(--blue);font-weight:700">*</sup> (2026)</div></div>
+      <div class="pub-right"><div class="pub-journal">Building and Environment</div><div class="pub-year">297, 114578</div></div>
+    </div>
+    <div class="pub-item">
+      <div><div class="pub-title">Daylighting assessment of window layouts and architectural elements in early design stages</div><div class="pub-authors">Cong Thanh Do, Nguyen Thi Thuy Dung, <strong>Ying-Chieh Chan</strong><sup style="color:var(--blue);font-weight:700">*</sup> (2025)</div></div>
+      <div class="pub-right"><div class="pub-journal">Scientific Reports</div><div class="pub-year">15, 39507</div></div>
+    </div>
+    <div class="pub-item">
+      <div><div class="pub-title">Contextual evaluation of the impact of dynamic urban window view content on view satisfaction</div><div class="pub-authors">Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong><sup style="color:var(--blue);font-weight:700">*</sup> (2025)</div></div>
+      <div class="pub-right"><div class="pub-journal">Building and Environment</div><div class="pub-year">267A, 112303</div></div>
+    </div>
+    <div class="pub-item">
+      <div><div class="pub-title">Impact of weather forecasting uncertainty on building thermal load predictions</div><div class="pub-authors">Cong Thanh Do, Simeon N. Ingabo, Non Phichetkunbodee, Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong><sup style="color:var(--blue);font-weight:700">*</sup> (2025)</div></div>
+      <div class="pub-right"><div class="pub-journal">J. Building Engineering</div><div class="pub-year">111, 113366</div></div>
+    </div>
+    <div class="pub-item">
+      <div><div class="pub-title">Is Virtual Reality an Effective Experimental Tool for Window View Studies with Dynamic Content Involved?</div><div class="pub-authors">Simeon N. Ingabo, Gan-Quan Sheng, Lin-Na Chiang, Wei-Che Yen, <strong>Ying-Chieh Chan</strong><sup style="color:var(--blue);font-weight:700">*</sup> (2024)</div></div>
+      <div class="pub-right"><div class="pub-journal">Leukos</div><div class="pub-year">1–24</div></div>
+    </div>
+
+    <div class="view-all"><a href="publications.html">View all publications</a></div>
+  </div>
+</div>
+
+<!-- AWARDS -->
+<div class="sec alt" id="awards">
+  <div class="sec-inner">
+    <div class="sec-title">Awards &amp; Honors</div>
+    <div class="award-grid">
+      <div class="aw-item"><div class="aw-yr">2025</div><div class="aw-desc">Excellence in Teaching Award, National Taiwan University</div></div>
+      <div class="aw-item"><div class="aw-yr">2019</div><div class="aw-desc">ASCE Outstanding Reviewer Award</div></div>
+      <div class="aw-item"><div class="aw-yr">2018–20</div><div class="aw-desc">Ministry of Science and Technology Young Scholar Fellowship</div></div>
+      <div class="aw-item"><div class="aw-yr">2016–19</div><div class="aw-desc">MOST Special Outstanding Talent Award for New Faculty</div></div>
+      <div class="aw-item"><div class="aw-yr">2014</div><div class="aw-desc">Bilsland PhD Dissertation Fellowship, Purdue University</div></div>
+      <div class="aw-item"><div class="aw-yr">2014</div><div class="aw-desc">Purdue College of Engineering Travel Fund for Engineering PhD Candidates</div></div>
+      <div class="aw-item"><div class="aw-yr">2013</div><div class="aw-desc">ASHRAE Grant-in-Aid Award</div></div>
+      <div class="aw-item"><div class="aw-yr">2012</div><div class="aw-desc">Best Student Paper Award, 2nd Int'l High Performance Buildings Conference</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:60px 7%">
+  <div class="sec-inner">
+    <div class="sec-title">Contact</div>
+    <div class="contact-grid">
+      <div class="cc"><div class="cc-label">Email</div><a href="mailto:ychan@ntu.edu.tw">ychan@ntu.edu.tw</a></div>
+      <div class="cc"><div class="cc-label">Phone</div><p>+886-2-3366-4332</p></div>
+      <div class="cc"><div class="cc-label">Office</div><p>Room 705, New Civil Engineering Building, NTU</p></div>
+      <div class="cc"><div class="cc-label">Google Scholar</div><a href="https://scholar.google.com/citations?user=SIONlOgAAAAJ" target="_blank">View Profile</a></div>
+      <div class="cc"><div class="cc-label">ORCID</div><a href="https://orcid.org/0000-0002-4195-8739" target="_blank">0000-0002-4195-8739</a></div>
+      <div class="cc"><div class="cc-label">ResearchGate</div><a href="https://www.researchgate.net/profile/Ying-Chieh-Chan" target="_blank">View Profile</a></div>
+      <div class="cc"><div class="cc-label">Original site</div><a href="https://yingchiehchan.com" target="_blank">yingchiehchan.com</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Ying-Chieh Chan &nbsp;·&nbsp; Department of Civil Engineering, National Taiwan University</footer>
+
+
+<!-- ═══════ MODALS ═══════ -->
+
+<!-- Window Views -->
+<div class="modal-overlay" id="modal-views" onclick="closeOnOverlay(event,'modal-views')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-views')">✕</button>
+    <p class="modal-kicker">Visual Comfort</p>
+    <h3>Window Views &amp; Occupant Well-being</h3>
+    <p class="modal-desc">Access to daylight and nature views is a fundamental occupant need, yet it is rarely quantified with rigor. My group has developed computational and experimental methods to measure <em>what makes a window view satisfying</em>. Early work introduced the <strong>View Clarity Index (VCI)</strong> — a metric capturing how much a shade obscures a view (Building and Environment, 2015). Subsequent studies shifted focus to view <em>content</em>: how sky fraction, nature elements, and urban features affect occupant preference (2022). More recently, we have addressed <strong>dynamic views</strong> — traffic, pedestrians, changing weather — and their contextual impact on satisfaction (2025).<br/><br/>
+    A key methodological contribution is the use of <strong>Virtual Reality</strong> as an experimental platform (2024, Leukos), allowing controlled manipulation of view content. We also developed a <strong>ray-casting workflow</strong> (2026) to extract true occupant-perspective views from fish-eye footage, enabling large-scale view analysis in real buildings. Parallel work examines how <strong>bird-collision prevention glazing patterns</strong> degrade view quality (2024).</p>
+    <div class="modal-figure"><img src="images/views-fig1.jpg" alt="Ray-casting workflow"/></div>
+    <p class="modal-caption">Ray-casting workflow: rays are cast from the occupant's field of view through the window to determine the visible portion of the outdoor scene. (Ingabo &amp; Chan, Building and Environment, 2026)</p>
+    <div class="modal-figure" style="margin-top:14px"><img src="images/vr-window.jpg" alt="VR experiment setup"/></div>
+    <p class="modal-caption">VR experimental setup for controlled window view studies with dynamic content. (Ingabo et al., Leukos, 2024)</p>
+    <div class="modal-pubs">
+      <h4>Key Publications</h4>
+      <div class="modal-pub-item"><div class="pt">A ray-casting workflow for extraction of occupant perspective views from recorded window view footage</div><div class="pj">Building and Environment, 297, 114578 (2026)</div></div>
+      <div class="modal-pub-item"><div class="pt">Contextual evaluation of the impact of dynamic urban window view content on view satisfaction</div><div class="pj">Building and Environment, 267A, 112303 (2025)</div></div>
+      <div class="modal-pub-item"><div class="pt">Is Virtual Reality an Effective Experimental Tool for Window View Studies with Dynamic Content Involved?</div><div class="pj">Leukos, 1–24 (2024)</div></div>
+      <div class="modal-pub-item"><div class="pt">Evaluating the impact of bird collisions prevention glazing pattern design on window views</div><div class="pj">Building and Environment, 259, 111657 (2024)</div></div>
+      <div class="modal-pub-item"><div class="pt">Evaluation of window view preference using quantitative and qualitative factors of window view content</div><div class="pj">Building and Environment, 213, 108886 (2022)</div></div>
+      <div class="modal-pub-item"><div class="pt">View clarity index: A new metric to evaluate clarity of view through window shades</div><div class="pj">Building and Environment, 90, 206–214 (2015)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Daylighting -->
+<div class="modal-overlay" id="modal-daylight" onclick="closeOnOverlay(event,'modal-daylight')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-daylight')">✕</button>
+    <p class="modal-kicker">Daylighting</p>
+    <h3>Daylighting &amp; Automated Shading Control</h3>
+    <p class="modal-desc">My doctoral research at Purdue focused on the optical and thermal behavior of window shading systems. A foundational contribution was a <strong>hybrid ray-tracing and radiosity method</strong> for computing radiation transport through venetian blind slats (Solar Energy, 2012), enabling more accurate prediction of interior illuminance and solar gains.<br/><br/>
+    Subsequent work developed <strong>automated control strategies for venetian blinds</strong> that simultaneously maximize daylight utilization and prevent discomfort glare (Solar Energy, 2013). This was extended to <strong>roller shades</strong> — including a systematic method for selecting shade openness factor and reflectance for glare protection (Energy and Buildings, 2015). More recently, the group studied <strong>multi-sectional facades</strong> (Solar Energy, 2020), <strong>daylight-redirecting window films</strong> paired with roller shades (Building and Environment, 2021), and the optimal <strong>placement of photosensors</strong> for daylight-linked lighting control systems (Building and Environment, 2023). The most recent work evaluates daylighting in early design stages across varied window layouts and room widths (Scientific Reports, 2025).</p>
+    <div class="modal-figure"><img src="images/daylight-fig1.webp" alt="Five window layouts with different WWRs"/></div>
+    <p class="modal-caption">Five window layouts (square, rectangular, horizontal, vertical, window-wall) for three room widths (3 m, 6 m, 9 m) with varying Window-to-Wall Ratios. (Do, Dung &amp; Chan, Scientific Reports, 2025)</p>
+    <div class="modal-pubs">
+      <h4>Key Publications</h4>
+      <div class="modal-pub-item"><div class="pt">Daylighting assessment of window layouts and architectural elements in early design stages</div><div class="pj">Scientific Reports, 15, 39507 (2025)</div></div>
+      <div class="modal-pub-item"><div class="pt">Selection of spatial sensitivity curve and installation location of photosensors for daylight-linked control systems</div><div class="pj">Building and Environment, 230, 109984 (2023)</div></div>
+      <div class="modal-pub-item"><div class="pt">Daylighting performance analysis of a facade combining daylight-redirecting window film and automated roller shade</div><div class="pj">Building and Environment, 191, 107596 (2021)</div></div>
+      <div class="modal-pub-item"><div class="pt">Evaluation of the effectiveness of a multi-sectional facade with Venetian blinds and roller shades</div><div class="pj">Solar Energy, 212, 241–257 (2020)</div></div>
+      <div class="modal-pub-item"><div class="pt">A systematic method for selecting roller shade properties for glare protection</div><div class="pj">Energy and Buildings, 92, 81–94 (2015)</div></div>
+      <div class="modal-pub-item"><div class="pt">Efficient venetian blind control strategies considering daylight utilization and glare protection</div><div class="pj">Solar Energy, 98, 241–254 (2013)</div></div>
+      <div class="modal-pub-item"><div class="pt">A hybrid ray-tracing and radiosity method for radiation transport with venetian blinds</div><div class="pj">Solar Energy, 86(11), 3109–3124 (2012)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Building Thermal -->
+<div class="modal-overlay" id="modal-energy" onclick="closeOnOverlay(event,'modal-energy')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-energy')">✕</button>
+    <p class="modal-kicker">Energy</p>
+    <h3>Building Thermal Performance &amp; Energy Modeling</h3>
+    <p class="modal-desc">Accurate prediction of building thermal loads is central to energy-efficient design. Our work has addressed two related challenges: (1) how shading control strategies affect the <strong>Overall Thermal Transfer Value (OTTV)</strong> of building envelopes under Taiwan's tropical-subtropical climate, and (2) how <strong>uncertainty in weather forecast inputs</strong> propagates into load prediction errors (Journal of Building Engineering, 2025).<br/><br/>
+    At the urban scale, we developed sensitivity analyses for <strong>microclimate simulation parameters</strong> — systematically characterizing how building material properties, ground cover types, and tree configurations affect pedestrian thermal comfort and surface temperatures (Urban Climate, 2024). Earlier work (Purdue) examined <strong>absorbed solar gain distribution models</strong> in perimeter zones (ASHRAE Transactions, 2013) and methods to estimate detailed optical properties of window shades (Energy and Buildings, 2016).</p>
+    <div class="modal-figure"><img src="images/cooling-load-uncertainty.jpg" alt="Cooling load uncertainty distributions"/></div>
+    <p class="modal-caption">Probability distributions of cooling demand uncertainty caused by biased forecasting errors in temperature, wind speed/direction, relative humidity, and solar irradiation. (Do, Ingabo, Phichetkunbodee, Shih &amp; Chan, Journal of Building Engineering, 2025)</p>
+    <div class="modal-pubs">
+      <h4>Key Publications</h4>
+      <div class="modal-pub-item"><div class="pt">Impact of weather forecasting uncertainty on building thermal load predictions</div><div class="pj">Journal of Building Engineering, 111, 113366 (2025)</div></div>
+      <div class="modal-pub-item"><div class="pt">A simulation-based workflow to calculate OTTV when implementing daylighting-oriented shading control</div><div class="pj">Journal of Building Engineering, 84, 108616 (2024)</div></div>
+      <div class="modal-pub-item"><div class="pt">Sensitivity analysis of building material, ground material, and tree parameters in microclimate simulations</div><div class="pj">Urban Climate, 58, 102184 (2024)</div></div>
+      <div class="modal-pub-item"><div class="pt">Estimating detailed optical properties of window shades from basic available data</div><div class="pj">Energy and Buildings, 126, 397–401 (2016)</div></div>
+      <div class="modal-pub-item"><div class="pt">Analysis and Comparison of Absorbed Solar Gain Distribution Models in Perimeter Building Zones</div><div class="pj">ASHRAE Transactions, 119(2) (2013)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- IAQ -->
+<div class="modal-overlay" id="modal-iaq" onclick="closeOnOverlay(event,'modal-iaq')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-iaq')">✕</button>
+    <p class="modal-kicker">Indoor Air Quality</p>
+    <h3>Kitchen Ventilation &amp; Indoor Air Quality</h3>
+    <p class="modal-desc">Cooking-generated pollutants pose significant health risks in residential and commercial kitchens. Our research investigates how <strong>kitchen hood design and ventilation opening configurations</strong> affect the effectiveness of pollutant removal after cooking events.<br/><br/>
+    We combined <strong>field measurements with simulation</strong> to evaluate how exhaust flow rate, hood geometry, and the location and area of makeup-air openings (windows, doors) interact to determine capture efficiency. A 2024 study in Indoor Air examined the effects of <strong>window position and exhaust flow rate</strong> on hood performance. A follow-up (Journal of Building Engineering, 2025) provided more comprehensive guidance on <strong>ventilation opening strategies</strong> for improving post-cooking IAQ.</p>
+    <div class="modal-figure"><img src="images/kitchen1.jpg" alt="Kitchen CFD simulation setup"/></div>
+    <p class="modal-caption">CFD simulation geometry: (a) kitchen hood dimensions, (b) floor plan, (c) mesh model, (d) 3D model with exhaust hood, heat source, and door/transom configurations. (Chen, Chang &amp; Chan, Journal of Building Engineering, 2025)</p>
+    <div class="modal-figure" style="margin-top:14px"><img src="images/kitchen2.jpg" alt="Field measurement setup"/></div>
+    <p class="modal-caption">Field measurement setup with sensor pole (50–200 cm heights), BOSCH BME680 temperature sensor and particle sensor for real-time IAQ monitoring.</p>
+    <div class="modal-pubs">
+      <h4>Key Publications</h4>
+      <div class="modal-pub-item"><div class="pt">Assessing the impact of kitchen hoods and ventilation openings on indoor air quality post-cooking</div><div class="pj">Journal of Building Engineering, 100, 111721 (2025)</div></div>
+      <div class="modal-pub-item"><div class="pt">Effects of Window Position and Exhaust Flow Rate on Residential Kitchen Hood Performance</div><div class="pj">Indoor Air, 2024, 8834373 (2024)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Urban Microclimate -->
+<div class="modal-overlay" id="modal-smart" onclick="closeOnOverlay(event,'modal-smart')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-smart')">✕</button>
+    <p class="modal-kicker">Urban Microclimate</p>
+    <h3>Urban Microclimate &amp; Outdoor Thermal Comfort</h3>
+    <p class="modal-desc">The thermal conditions experienced at street level are shaped by a complex interplay of building geometry, surface materials, ground cover, and urban vegetation. Our research uses <strong>microclimate simulation</strong> to understand and improve outdoor thermal comfort in urban settings — with a particular focus on campus and public space design in hot-humid climates.<br/><br/>
+    A key contribution is a systematic <strong>sensitivity analysis</strong> of simulation input parameters (Urban Climate, 2024): we evaluated how building facade materials, ground surface types, and tree characteristics each affect pedestrian mean radiant temperature and outdoor thermal comfort indices. A companion study quantified the <strong>potential of trees</strong> to increase thermally comfortable hours in campus public spaces (Energy Reports, 2023).</p>
+    <div class="modal-figure"><img src="images/microclimate-fig1.jpg" alt="Sensitivity analysis process overview"/></div>
+    <p class="modal-caption">Sensitivity analysis process overview: parameter categories (building wall, soil &amp; ground, tree), case study designs, and microclimate evaluation metrics. (Le, Hip, Yang &amp; Chan, Urban Climate, 2024)</p>
+    <div class="modal-pubs">
+      <h4>Key Publications</h4>
+      <div class="modal-pub-item"><div class="pt">Sensitivity analysis of building material, ground material, and tree parameters in microclimate simulations</div><div class="pj">Urban Climate, 58, 102184 (2024)</div></div>
+      <div class="modal-pub-item"><div class="pt">The potential of a tree to increase comfort hours in campus public space design</div><div class="pj">Energy Reports, 9, 184–193 (2023)</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+  function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow=''}
+  function closeOnOverlay(e,id){if(e.target===document.getElementById(id))closeModal(id)}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>{m.classList.remove('open');document.body.style.overflow=''})})
+</script>
+</body>
+</html>
