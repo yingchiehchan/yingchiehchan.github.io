@@ -136,14 +136,27 @@
 
     footer{background:#070e1a;text-align:center;padding:16px;font-size:0.75rem;color:rgba(255,255,255,0.2)}
 
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:20px;height:2px;background:#fff;margin:4px 0}
+    .mobile-menu{
+      display:none;position:fixed;top:56px;left:0;right:0;z-index:199;
+      background:var(--navy);padding:16px 7%;flex-direction:column;gap:16px;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
+    .mobile-menu a:hover{color:#fff}
     @media(max-width:768px){
       .hero-grid{grid-template-columns:1fr}
       .hero-photo{width:140px;height:168px}
       .research-grid{grid-template-columns:1fr}
       .award-grid{grid-template-columns:1fr}
       nav ul{display:none}
+      .hamburger{display:block}
       .pub-item{grid-template-columns:1fr}
       .pub-right{text-align:left}
+      #hero{padding:80px 5% 48px}
+      .sec{padding:48px 5%}
     }
   </style>
 </head>
@@ -160,7 +173,19 @@
     <li><a href="group.html">Group</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" onclick="document.getElementById('mainMobMenu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mainMobMenu">
+  <a href="#research">Research</a>
+  <a href="#education">Education</a>
+  <a href="#publications">Publications</a>
+  <a href="#awards">Awards</a>
+  <a href="group.html">Group</a>
+  <a href="#contact">Contact</a>
+</div>
 
 <!-- HERO -->
 <div style="max-width:1060px;margin:0 auto">
