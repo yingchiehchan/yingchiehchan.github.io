@@ -12,7 +12,7 @@
       --white: #ffffff; --gray: #4b5563; --gray-light: #f8f9fb;
       --border: #e2e6ec; --dark: #0d1b2e; --muted: #8492a6;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 18px; }
     body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray); line-height: 1.65; }
 
     nav {
@@ -701,13 +701,14 @@
     if (cat === 'journal') {
       document.querySelectorAll('.pub-section[data-cat="journal"]').forEach(s => s.style.display = '');
       document.querySelectorAll('.pub-section[data-cat="conference"]').forEach(s => s.style.display = 'none');
-      document.querySelectorAll('.pub-item').forEach(el => el.style.display = '');
+      allItems.forEach(el => el.style.display = '');
       allTitles.forEach(t => t.style.display = '');
       return;
     }
     if (cat === 'conference') {
       document.querySelectorAll('.pub-section[data-cat="journal"]').forEach(s => s.style.display = 'none');
       document.querySelectorAll('.pub-section[data-cat="conference"]').forEach(s => s.style.display = '');
+      allItems.forEach(el => el.style.display = '');
       allTitles.forEach(t => t.style.display = '');
       return;
     }
