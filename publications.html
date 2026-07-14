@@ -11,6 +11,7 @@
       --navy: #0f2744; --blue: #1a56c4; --blue-dim: #e8eef9;
       --white: #ffffff; --gray: #4b5563; --gray-light: #f8f9fb;
       --border: #e2e6ec; --dark: #0d1b2e; --muted: #8492a6;
+      --amber: #92400e; --amber-bg: #fef3c7;
     }
     html { scroll-behavior: smooth; font-size: 18px; }
     body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray); line-height: 1.65; }
@@ -81,6 +82,11 @@
     }
     .conf-item .ct { font-weight: 500; color: var(--dark); margin-bottom: 3px; }
     .conf-item .cv { font-size: 0.77rem; color: var(--muted); }
+    .award-badge {
+      font-size: 0.6rem; font-weight: 700; color: var(--amber); background: var(--amber-bg);
+      border: 1px solid #fcd34d; padding: 1px 7px; margin-left: 6px;
+      display: inline-block; letter-spacing: 0.04em; vertical-align: middle; white-space: nowrap;
+    }
 
     footer { background: #070e1a; text-align: center; padding: 16px; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
     .nav-links { display: flex; gap: 24px; }
@@ -405,19 +411,34 @@
   <!-- CONFERENCE PAPERS -->
   <div class="pub-section" data-cat="conference">
 
-    <div class="pub-section-title">International Conference Papers — 2024–2025</div>
+    <div class="pub-section-title">International Conference Papers — 2026</div>
+
+    <div class="conf-item" data-tags="conference microclimate">
+      <div class="ct">Pareto Based Performance Framework for Urban Greening: Visualizing Trade-offs between Cost, Carbon Sequestration, and Shading</div>
+      <div class="cv">Yu-Cian Lin, <strong>Ying-Chieh Chan</strong> · IAQVEC 2026, Los Angeles, USA, May 2026</div>
+    </div>
+    <div class="conf-item" data-tags="conference daylight">
+      <div class="ct">Interactive Lighting Design and Simulation Interface Based on BIM and Game Engine for Smart Indoor Environment</div>
+      <div class="cv">Chung-Luen Cheng, <strong>Ying-Chieh Chan</strong> · IAQVEC 2026, Los Angeles, USA, May 2026</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">Evaluating the Impact of Reflective Painting on Building HVAC Performance</div>
+      <div class="cv">Oi-Man Hip, Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · IAQVEC 2026, Los Angeles, USA, May 2026</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">International Conference Papers — 2024–2025</div>
 
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">Clustering-based Framework for Large Urban Studies: A Case Study in Taipei City</div>
-      <div class="cv">Non Phichetkunbodee, Damrongsak Rinchumphu, <strong>Ying-Chieh Chan</strong> · Building Simulation 2025, Brisbane, Australia</div>
+      <div class="cv">Non Phichetkunbodee, Damrongsak Rinchumphu, <strong>Ying-Chieh Chan</strong> · Building Simulation 2025, Brisbane, Australia, September 2025</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">Evaluating Bikeability in Taipei City – Key Factors and Insights from GIS, Online Surveys, and Interviews</div>
-      <div class="cv">Chau, T.N.M., <strong>Ying-Chieh Chan</strong> · 31st Annual Conference of ISDRS, Budapest, Hungary, June 2025</div>
+      <div class="cv">Truong Nhat Minh Chau, <strong>Ying-Chieh Chan</strong> · 31st Annual Conference of ISDRS, Budapest, Hungary, June 2025</div>
     </div>
     <div class="conf-item" data-tags="conference iaq">
       <div class="ct">Assessing the Impact of Kitchen Layouts and Ventilation Openings on Indoor Air Quality</div>
-      <div class="cv">Chao-Yen Chang, Shou-Wang Chen, <strong>Ying-Chieh Chan</strong> · COBEE 2025, Eindhoven, Netherlands</div>
+      <div class="cv">Chao-Yen Chang, Shou-Wang Chen, <strong>Ying-Chieh Chan</strong> · COBEE 2025, Eindhoven, Netherlands, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">Semi-Automated Pedestrian Verandas Quality Assessments</div>
@@ -425,19 +446,23 @@
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">Understanding the Impact of Weather Conditions on Transportation Mode Choices in Taiwan</div>
-      <div class="cv">Non Phichetkunbodee, Damrongsak Rinchumphu, Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · EASEC-18, November 2024</div>
+      <div class="cv">Non Phichetkunbodee, Damrongsak Rinchumphu, Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · EASEC-18, Chiang Mai, Thailand, November 2024</div>
+    </div>
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">Comparative Analysis of the Energy Consumption and Resilience of HVAC System Configurations under Climate Change</div>
+      <div class="cv">Oi-Man Hip, Simeon N. Ingabo, Non Phichetkunbodee, <strong>Ying-Chieh Chan</strong> · CISBAT 2025, Lausanne, Switzerland, September 2025</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">Analysis of Factors Influencing Residents' Perceptions Regarding Potential Increases in Electricity Prices in Residential Buildings</div>
-      <div class="cv">Christian K. Bambang, Anh-Vu Le, Non Phichetkunbodee, Simeon N. Ingabo, et al., <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver</div>
+      <div class="cv">Christian K. Bambang, Anh-Vu Le, Non Phichetkunbodee, Simeon N. Ingabo, et al., <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver, USA, May 2024</div>
     </div>
     <div class="conf-item" data-tags="conference energy">
       <div class="ct">Impact of Lifestyle Changes on Energy Consumption in Research Buildings</div>
-      <div class="cv">Simeon N. Ingabo, Anh-Vu Le, Christian K. Bambang, et al., <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver</div>
+      <div class="cv">Simeon N. Ingabo, Anh-Vu Le, Christian K. Bambang, et al., <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver, USA, May 2024</div>
     </div>
     <div class="conf-item" data-tags="conference views">
       <div class="ct">Decomposition of Dynamic Window Views Using Semantic Segmentation</div>
-      <div class="cv">Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver</div>
+      <div class="cv">Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · IBPSA-USA 2024, Denver, USA, May 2024</div>
     </div>
 
     <div class="pub-section-title" style="margin-top:32px;">International Conference Papers — 2018–2023</div>
@@ -448,15 +473,15 @@
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">Comparison between ENVI-met and Ansys-Fluent when used for microclimate simulation</div>
-      <div class="cv">Anh-Vu Le, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne, Switzerland</div>
+      <div class="cv">Anh-Vu Le, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne, Switzerland, September 2023</div>
     </div>
     <div class="conf-item" data-tags="conference iaq">
       <div class="ct">The benefit of kitchen exhaust fan uses after cooking – A CFD assessment</div>
-      <div class="cv">Shou-Wang Chen, Chao-Yen Chang, Wan-Chen Lee, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne</div>
+      <div class="cv">Shou-Wang Chen, Chao-Yen Chang, Wan-Chen Lee, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne, Switzerland, September 2023</div>
     </div>
     <div class="conf-item" data-tags="conference energy">
       <div class="ct">Development of personalized predicted mean vote based on a real time clothing insulation recognition system</div>
-      <div class="cv">Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne</div>
+      <div class="cv">Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong> · CISBAT 2023, Lausanne, Switzerland, September 2023</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">Impact of Different Urban Design Parameters on Pedestrian Thermal and Visual Perception</div>
@@ -464,11 +489,11 @@
     </div>
     <div class="conf-item" data-tags="conference energy daylight">
       <div class="ct">Model Evaluation and Development for Global and Diffuse Luminous Efficacy Models</div>
-      <div class="cv">Cong Thanh Do, Hui Shen, <strong>Ying-Chieh Chan</strong>, Xiaoyu Liu · Building Simulation 2019, Rome</div>
+      <div class="cv">Cong Thanh Do, Hui Shen, <strong>Ying-Chieh Chan</strong>, Xiaoyu Liu · Building Simulation 2019, Rome, Italy, September 2019</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">Development of a New Framework for Daylighting Simulation with Dynamic Shading Devices</div>
-      <div class="cv">Cong Thanh Do, <strong>Ying-Chieh Chan</strong> · 5th High Performance Buildings Conference at Purdue, July 2018</div>
+      <div class="cv">Cong Thanh Do, <strong>Ying-Chieh Chan</strong> · 5th High Performance Buildings Conference at Purdue, West Lafayette, USA, July 2018</div>
     </div>
     <div class="conf-item" data-tags="conference iaq">
       <div class="ct">Computational Analysis of Cross Ventilation for Classrooms with Operable Transom Windows</div>
@@ -479,19 +504,19 @@
 
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">Daylighting and Energy Analysis of Offices with Multi-sectional Façades</div>
-      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · International Building Physics Conference, Torino, June 2015</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · International Building Physics Conference, Torino, Italy, June 2015</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">Window Shades: Selecting Optical Properties for Visual Comfort</div>
-      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · Building Simulation Applications, Bolzano, February 2015</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · Building Simulation Applications, Bolzano, Italy, February 2015</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">Impact of Solar Optical Properties of Roller Shades on Energy, Daylighting and Comfort</div>
-      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos, J. Brent Protzman · ASHRAE Annual Conference, Atlanta, June 2014</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos, J. Brent Protzman · ASHRAE Annual Conference, Atlanta, USA, June 2014</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">Annual Daylight Glare Evaluation for Typical Perimeter Offices: Simulation Models versus Full-Scale Experiments</div>
-      <div class="cv"><strong>Ying-Chieh Chan</strong>, Iason Konstantzos, Athanasios Tzempelikos · ASHRAE Annual Conference, Seattle, June 2014</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Iason Konstantzos, Athanasios Tzempelikos · ASHRAE Annual Conference, Seattle, USA, June 2014</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">Efficient Control Strategies for Venetian Blinds Considering Daylight Utilization and Glare</div>
@@ -499,57 +524,80 @@
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">Automated Blind Control Strategies for Improving Lighting Energy Performance While Ensuring Visual Comfort</div>
-      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · CISBAT 2013, Lausanne</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · CISBAT 2013, Lausanne, Switzerland, September 2013</div>
     </div>
     <div class="conf-item" data-tags="conference energy daylight">
       <div class="ct">Impact of Shading Control and Thermostat Set Point Control in Buildings with Thermal Mass</div>
-      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · Building Simulation 2013, Chambery, France</div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · Building Simulation 2013, Chambéry, France, August 2013</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
-      <div class="ct">Automated Blind Control Strategies for Improving Lighting Energy Performance — Best Student Paper Award</div>
-      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · 2nd International High Performance Buildings Conference, Purdue, 2012</div>
+      <div class="ct">Automated Blind Control Strategies for Improving Lighting Energy Performance <span class="award-badge">🏆 Best Student Paper Award</span></div>
+      <div class="cv"><strong>Ying-Chieh Chan</strong>, Athanasios Tzempelikos · 2nd International High Performance Buildings Conference, Purdue, West Lafayette, USA, July 2012</div>
+    </div>
+
+    <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2026 (30th SCEM)</div>
+
+    <div class="conf-item" data-tags="conference energy">
+      <div class="ct">模擬與實證工業大樓之節能措施效益 <span class="award-badge">🏆 Best Paper Award</span></div>
+      <div class="cv">譚世麟, <strong>詹瀅潔</strong> · 30th SCEM, Taipei, July 2026</div>
+    </div>
+    <div class="conf-item" data-tags="conference iaq">
+      <div class="ct">羽毛球館氣流模擬輔助設計方案研究—以新生全民運動館為例 <span class="award-badge">🏆 Outstanding Paper Award</span></div>
+      <div class="cv">王順典, <strong>詹瀅潔</strong> · 30th SCEM, Taipei, July 2026</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">The Influence of the Quality of Public Open Spaces (POS) on Social Interaction Among the Elderly in a Densely Populated Urban Environment: A Case Study of New Taipei, Taiwan</div>
+      <div class="cv">Vicent Mvungi, <strong>Ying-Chieh Chan</strong> · 30th SCEM, Taipei, July 2026</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">Comparative Life Cycle Assessment of Carbon Emissions from Wood, Aluminum, Steel, and Plastic Formwork in Building Construction</div>
+      <div class="cv">Awanda Nur Pratiwi, <strong>Ying-Chieh Chan</strong> · 30th SCEM, Taipei, July 2026</div>
+    </div>
+    <div class="conf-item" data-tags="conference other">
+      <div class="ct">Perception of Modular Construction for Worker's Accommodation: The Effect of Informational Exposure on Public Attitudes</div>
+      <div class="cv">Ta Dang Bach, <strong>Ying-Chieh Chan</strong> · 30th SCEM, Taipei, July 2026</div>
     </div>
 
     <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2025 (29th SCEM)</div>
 
     <div class="conf-item" data-tags="conference other">
       <div class="ct">鋁模工法搭配預鑄工法在建築工程的應用——以社會住宅為例</div>
-      <div class="cv">傅籌瑩, <strong>Ying-Chieh Chan</strong>, 曾惠斌 · 29th SCEM, Kaohsiung, July 2025</div>
+      <div class="cv">傅籌瑩, <strong>詹瀅潔</strong>, 曾惠斌 · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">基於固碳與成本效益之城市綠化配置最佳化模型——以台北市為例</div>
-      <div class="cv">林禹芊, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+      <div class="cv">林禹芊, <strong>詹瀅潔</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
-      <div class="ct">整合遊戲引擎與建築資訊模型以模擬建築室內光照環境之流程開發研究 — Outstanding Paper Award</div>
-      <div class="cv">鄭仲倫, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+      <div class="ct">整合遊戲引擎與建築資訊模型以模擬建築室內光照環境之流程開發研究 <span class="award-badge">🏆 Outstanding Paper Award</span></div>
+      <div class="cv">鄭仲倫, <strong>詹瀅潔</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">設計階段建築結構碳排之不確定性估算</div>
-      <div class="cv">謝亭芸, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+      <div class="cv">謝亭芸, <strong>詹瀅潔</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">室內裝修之噪音測量與模擬驗證</div>
-      <div class="cv">林曾浩, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+      <div class="cv">林曾浩, <strong>詹瀅潔</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference other">
-      <div class="ct">建築工地之噪音危害識別 — Excellent Paper Award</div>
-      <div class="cv">許豐榮, Lin-Na Chiang, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+      <div class="ct">建築工地之噪音危害識別 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">許豐榮, 蔣玲娜, <strong>詹瀅潔</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference other">
-      <div class="ct">平衡綠建築標章申請與車站舒適度之可行性研究——以捷運車站為例 — Excellent Paper Award</div>
-      <div class="cv">陳思穎, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
+      <div class="ct">平衡綠建築標章申請與車站舒適度之可行性研究——以捷運車站為例 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">陳思穎, <strong>詹瀅潔</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference views">
-      <div class="ct">DynamicViews: A Dynamic Window View Quality Evaluation Tool Based on Video Semantic Segmentation — Outstanding Paper Award</div>
+      <div class="ct">DynamicViews: A Dynamic Window View Quality Evaluation Tool Based on Video Semantic Segmentation <span class="award-badge">🏆 Outstanding Paper Award</span></div>
       <div class="cv">Simeon N. Ingabo, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
-      <div class="ct">Influence of Urban Morphological Parameters on Rooftop and Facade Solar Generation Potential — Outstanding Paper Award</div>
+      <div class="ct">Influence of Urban Morphological Parameters on Rooftop and Facade Solar Generation Potential <span class="award-badge">🏆 Outstanding Paper Award</span></div>
       <div class="cv">Non Phichetkunbodee, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
-      <div class="ct">Comparative Analysis of Heat-Reflective Tile and Paint Materials for UHI Mitigation — Outstanding Paper Award</div>
+      <div class="ct">Comparative Analysis of Heat-Reflective Tile and Paint Materials for UHI Mitigation <span class="award-badge">🏆 Outstanding Paper Award</span></div>
       <div class="cv">Javier Arevalo, Shun-Yu Yang, <strong>Ying-Chieh Chan</strong> · 29th SCEM, Kaohsiung, July 2025</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
@@ -569,30 +617,30 @@
 
     <div class="conf-item" data-tags="conference other">
       <div class="ct">以減碳策略為基礎導入統包設計之研究——以某新建廠房為例</div>
-      <div class="cv">潘銘仁, 莊坤諺, <strong>Ying-Chieh Chan</strong>, 曾惠斌 · 28th SCEM, Yunlin, June 2024</div>
+      <div class="cv">潘銘仁, 莊坤諺, <strong>詹瀅潔</strong>, 曾惠斌 · 28th SCEM, Yunlin, June 2024</div>
     </div>
     <div class="conf-item" data-tags="conference energy other">
-      <div class="ct">利用電動公車車隊與車聯網方法最佳化大台北地區電網能源管理之初探 — Excellent Paper Award</div>
-      <div class="cv">王竣平, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+      <div class="ct">利用電動公車車隊與車聯網方法最佳化大台北地區電網能源管理之初探 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">王竣平, <strong>詹瀅潔</strong> · 28th SCEM, Yunlin, June 2024</div>
     </div>
     <div class="conf-item" data-tags="conference views microclimate">
-      <div class="ct">基於全景圖像的視因子分析與街景評價指標及方法統整 — Excellent Paper Award</div>
-      <div class="cv">郭銘晉, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+      <div class="ct">基於全景圖像的視因子分析與街景評價指標及方法統整 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">郭銘晉, <strong>詹瀅潔</strong> · 28th SCEM, Yunlin, June 2024</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">教學型大樓碳管理功能單元探討</div>
-      <div class="cv">丁嘉靖, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+      <div class="cv">丁嘉靖, <strong>詹瀅潔</strong> · 28th SCEM, Yunlin, June 2024</div>
     </div>
     <div class="conf-item" data-tags="conference iaq other">
-      <div class="ct">建立室內裝修期間空氣品質連續監測之流程——TVOC、甲醛及懸浮微粒 — Excellent Paper Award</div>
-      <div class="cv">鍾岳璋, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+      <div class="ct">建立室內裝修期間空氣品質連續監測之流程——TVOC、甲醛及懸浮微粒 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">鍾岳璋, <strong>詹瀅潔</strong> · 28th SCEM, Yunlin, June 2024</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">BIM 實務應用於探討降低建築工程碳排量</div>
-      <div class="cv">高志強, 曾惠斌, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
+      <div class="cv">高志強, 曾惠斌, <strong>詹瀅潔</strong> · 28th SCEM, Yunlin, June 2024</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
-      <div class="ct">Investigate the Influence of Pavement Properties on Microclimate in Taipei City — Outstanding Paper Award</div>
+      <div class="ct">Investigate the Influence of Pavement Properties on Microclimate in Taipei City <span class="award-badge">🏆 Outstanding Paper Award</span></div>
       <div class="cv">Oi-Man Hip, Anh-Vu Le, Shun-Yu Yang, <strong>Ying-Chieh Chan</strong> · 28th SCEM, Yunlin, June 2024</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
@@ -603,28 +651,28 @@
     <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2023 (27th SCEM)</div>
 
     <div class="conf-item" data-tags="conference views">
-      <div class="ct">評估防窗殺貼紙圖案設計對窗景的影響 — Outstanding Paper Award</div>
-      <div class="cv">顏騰涁, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+      <div class="ct">評估防窗殺貼紙圖案設計對窗景的影響 <span class="award-badge">🏆 Outstanding Paper Award</span></div>
+      <div class="cv">顏騰涁, <strong>詹瀅潔</strong> · 27th SCEM, Hsinchu, July 2023</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">營建工程結構體主要材料碳排放量分析——以港灣工程為例</div>
-      <div class="cv">葉鳳鳴, 莊坤諺, <strong>Ying-Chieh Chan</strong>, 曾惠斌 · 27th SCEM, Hsinchu, July 2023</div>
+      <div class="cv">葉鳳鳴, 莊坤諺, <strong>詹瀅潔</strong>, 曾惠斌 · 27th SCEM, Hsinchu, July 2023</div>
     </div>
     <div class="conf-item" data-tags="conference energy">
-      <div class="ct">應用預測資料與不確定性之冰水主機群負載分配最佳化 — Outstanding Paper Award</div>
-      <div class="cv">林志璿, Kuan-Chun Shih, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+      <div class="ct">應用預測資料與不確定性之冰水主機群負載分配最佳化 <span class="award-badge">🏆 Outstanding Paper Award</span></div>
+      <div class="cv">林志璿, 施冠群, <strong>詹瀅潔</strong> · 27th SCEM, Hsinchu, July 2023</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">半透明太陽能番茄溫室設計策略之研究</div>
-      <div class="cv">黎錦輝, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+      <div class="cv">黎錦輝, <strong>詹瀅潔</strong> · 27th SCEM, Hsinchu, July 2023</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">以運動攝影機輔助台北市人行道環境評估</div>
-      <div class="cv">王柏喻, <strong>Ying-Chieh Chan</strong> · 27th SCEM, Hsinchu, July 2023</div>
+      <div class="cv">王柏喻, <strong>詹瀅潔</strong> · 27th SCEM, Hsinchu, July 2023</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">Assessing Embodied Carbon Emissions of Various Building Types in Indonesia using IO-LCA</div>
-      <div class="cv">Lin-Na Chiang, 曾惠斌, <strong>Ying-Chieh Chan</strong>, Tapsoba A.W. · 27th SCEM, Hsinchu, July 2023</div>
+      <div class="cv">Lin-Na Chiang, Hui-Ping Tserng, <strong>Ying-Chieh Chan</strong>, Achille Wendyam Tapsoba · 27th SCEM, Hsinchu, July 2023</div>
     </div>
     <div class="conf-item" data-tags="conference microclimate">
       <div class="ct">A Comparative Analysis of the Influence of Taipei City Block Forms on Thermal Comfort</div>
@@ -638,43 +686,43 @@
     <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2022 (26th SCEM)</div>
 
     <div class="conf-item" data-tags="conference microclimate">
-      <div class="ct">不同鋪面對城市熱島效應和熱舒適性的影響 — Excellent Paper Award</div>
-      <div class="cv">曾睿, <strong>Ying-Chieh Chan</strong> · 26th SCEM, online, July 2022</div>
+      <div class="ct">不同鋪面對城市熱島效應和熱舒適性的影響 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">曾睿, <strong>詹瀅潔</strong> · 26th SCEM, online, July 2022</div>
     </div>
     <div class="conf-item" data-tags="conference daylight">
       <div class="ct">新建建築對周圍建築的室內日照影響分析</div>
-      <div class="cv">林沂葶, <strong>Ying-Chieh Chan</strong> · 26th SCEM, online, July 2022</div>
+      <div class="cv">林沂葶, <strong>詹瀅潔</strong> · 26th SCEM, online, July 2022</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">結合物聯網之智慧建築管理系統開發——以低功耗藍芽應用於室內定位系統為例</div>
-      <div class="cv">周昆儀, <strong>Ying-Chieh Chan</strong> · 26th SCEM, online, July 2022</div>
+      <div class="cv">周昆儀, <strong>詹瀅潔</strong> · 26th SCEM, online, July 2022</div>
     </div>
 
     <div class="pub-section-title" style="margin-top:32px;">Local Conference Papers — 2021 (25th SCEM) &amp; Earlier</div>
 
     <div class="conf-item" data-tags="conference other">
-      <div class="ct">Developing a BIM Plug-in to Support Green Building Certification for Materials and Resources — Best Paper Award</div>
+      <div class="ct">Developing a BIM Plug-in to Support Green Building Certification for Materials and Resources <span class="award-badge">🏆 Best Paper Award</span></div>
       <div class="cv">Ngo Xuan Quyet, <strong>Ying-Chieh Chan</strong> · TCI Concrete Conference, Kaohsiung, November 2021</div>
     </div>
     <div class="conf-item" data-tags="conference other">
       <div class="ct">Construction Site Workspace Planning, Conflict Detection and Resolution: The Gap between Academic Research and Practice</div>
-      <div class="cv">Tapsoba A.W., <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+      <div class="cv">Achille Wendyam Tapsoba, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
     </div>
     <div class="conf-item" data-tags="conference energy">
       <div class="ct">Load Prediction for an Ice Storage System Under Weather Forecast</div>
-      <div class="cv">Kuan-Chun Shih, 林志璿, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+      <div class="cv">Kuan-Chun Shih, Zhi-Xuan Lin, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
     </div>
     <div class="conf-item" data-tags="conference other">
-      <div class="ct">應用影像辨識分析挖土機之行為模式及其產值 — Excellent Paper Award</div>
-      <div class="cv">吳勻棠, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+      <div class="ct">應用影像辨識分析挖土機之行為模式及其產值 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">吳勻棠, <strong>詹瀅潔</strong> · 25th SCEM, online, July 2021</div>
     </div>
     <div class="conf-item" data-tags="conference other">
-      <div class="ct">老舊公寓大樓未成立管理組織之原因探討 — Excellent Paper Award</div>
-      <div class="cv">賴冠帆, 郭紀子, <strong>Ying-Chieh Chan</strong> · 25th SCEM, online, July 2021</div>
+      <div class="ct">老舊公寓大樓未成立管理組織之原因探討 <span class="award-badge">🏆 Excellent Paper Award</span></div>
+      <div class="cv">賴冠帆, 郭紀子, <strong>詹瀅潔</strong> · 25th SCEM, online, July 2021</div>
     </div>
     <div class="conf-item" data-tags="conference energy">
-      <div class="ct">實時空調能耗預測模擬與預測控制 — Best Paper Award</div>
-      <div class="cv">蔣星宇, <strong>Ying-Chieh Chan</strong> · 22nd SCEM, Taipei, July 2018</div>
+      <div class="ct">實時空調能耗預測模擬與預測控制 <span class="award-badge">🏆 Best Paper Award</span></div>
+      <div class="cv">蔣星宇, <strong>詹瀅潔</strong> · 22nd SCEM, Taipei, July 2018</div>
     </div>
 
   </div>
