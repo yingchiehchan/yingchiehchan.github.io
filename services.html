@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership &amp; Service — Ying-Chieh Chan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f2744; --blue: #1a56c4; --blue-dim: #e8eef9;
+      --white: #ffffff; --gray: #4b5563; --gray-light: #f8f9fb;
+      --border: #e2e6ec; --dark: #0d1b2e; --muted: #8492a6;
+      --amber: #b45309; --amber-bg: #fef3c7;
+    }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray); line-height: 1.65; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 7%; height: 56px;
+    }
+    .brand { font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; color: #fff; text-decoration: none; text-transform: uppercase; }
+
+    /* PAGE HEADER */
+    .page-header { padding: 96px 7% 40px; border-bottom: 1px solid var(--border); background: var(--white); }
+    .page-header-inner { max-width: 960px; margin: 0 auto; }
+    .kicker { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+    .page-header h1 { font-size: 1.8rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.02em; }
+    .page-header p { font-size: 0.875rem; color: var(--muted); max-width: 580px; line-height: 1.6; }
+
+    /* JUMP NAV */
+    .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 7%; position: sticky; top: 56px; z-index: 100; }
+    .jump-bar-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+    .jump-btn { padding: 13px 16px; font-size: 0.77rem; font-weight: 500; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; text-decoration: none; display: block; transition: color .2s, border-color .2s; }
+    .jump-btn:hover { color: var(--navy); border-bottom-color: var(--navy); }
+
+    /* CONTENT */
+    .content { max-width: 960px; margin: 0 auto; padding: 44px 7% 80px; }
+
+    /* SECTION HEADER */
+    .group-section { margin-bottom: 52px; }
+    .group-section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .group-section-header::after { content: ''; display: block; width: 32px; height: 2px; background: var(--navy); margin-bottom: -11px; }
+    .group-section-header h2 { font-size: 1.3rem; font-weight: 700; color: var(--dark); letter-spacing: -0.02em; }
+    .group-section-header .count { font-size: 0.78rem; color: var(--muted); }
+
+    /* SERVICE ITEM */
+    .svc-list { display: flex; flex-direction: column; gap: 6px; }
+    .svc-item {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 14px 18px; transition: border-color .15s;
+    }
+    .svc-item:hover { border-color: #b8c5d6; }
+    .svc-role { font-weight: 600; color: var(--dark); font-size: 0.9rem; }
+    .svc-org { font-size: 0.84rem; color: var(--gray); }
+    .svc-meta { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+    .svc-tag { font-size: 0.63rem; font-weight: 600; color: var(--blue); background: var(--blue-dim); border: 1px solid #cdddf5; padding: 1px 7px; margin-left: 8px; display: inline-block; letter-spacing: 0.03em; vertical-align: middle; }
+
+    /* REVIEW GRID */
+    .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .review-item {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 11px 15px; transition: border-color .15s;
+    }
+    .review-item:hover { border-color: #b8c5d6; }
+    .review-name { font-weight: 600; color: var(--dark); font-size: 0.84rem; line-height: 1.35; }
+    .review-pub { font-size: 0.75rem; color: var(--muted); display: block; margin-top: 1px; }
+    .flag { font-size: 0.63rem; font-weight: 600; color: var(--amber); background: var(--amber-bg); border: 1px solid #fcd34d; padding: 0 6px; margin-left: 6px; display: inline-block; letter-spacing: 0.02em; vertical-align: middle; }
+
+    footer { background: #070e1a; text-align: center; padding: 16px; font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+    .nav-links { display: flex; gap: 24px; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 20px; height: 2px; background: #fff; margin: 4px 0; }
+    .mobile-menu {
+      display: none; position: fixed; top: 56px; left: 0; right: 0; z-index: 199;
+      background: var(--navy); padding: 16px 7%; flex-direction: column; gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+    .mobile-menu a:hover { color: #fff; }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .review-grid { grid-template-columns: 1fr; }
+      .content { padding: 32px 5% 60px; }
+      .page-header { padding: 80px 5% 32px; }
+      .jump-bar { padding: 0 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">Ying-Chieh Chan</a>
+  <ul class="nav-links" style="list-style:none;">
+    <li><a href="index.html#research" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Research</a></li>
+    <li><a href="index.html#education" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Education</a></li>
+    <li><a href="publications.html" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Publications</a></li>
+    <li><a href="index.html#awards" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Awards</a></li>
+    <li><a href="group.html" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Group</a></li>
+    <li><a href="services.html" style="color:#fff;text-decoration:none;font-size:0.77rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;">Service</a></li>
+    <li><a href="index.html#contact" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#research">Research</a>
+  <a href="index.html#education">Education</a>
+  <a href="publications.html">Publications</a>
+  <a href="index.html#awards">Awards</a>
+  <a href="group.html">Group</a>
+  <a href="services.html" style="color:#fff;font-weight:700;">Service</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="kicker">Building Science Lab · NTU Civil Engineering</p>
+    <h1>Membership &amp; Service</h1>
+    <p>Professional memberships, editorial and conference roles, and peer review contributions to the building science and engineering community.</p>
+  </div>
+</div>
+
+<div class="jump-bar">
+  <div class="jump-bar-inner">
+    <a class="jump-btn" href="#organizations">Professional Organizations</a>
+    <a class="jump-btn" href="#institutional">Institutional Service</a>
+    <a class="jump-btn" href="#university">University Service</a>
+    <a class="jump-btn" href="#editorial">Editorial Boards</a>
+    <a class="jump-btn" href="#conference">Conference Organization</a>
+    <a class="jump-btn" href="#review">Peer Review</a>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- PROFESSIONAL ORGANIZATIONS -->
+  <div class="group-section" id="organizations">
+    <div class="group-section-header">
+      <h2>Professional Organizations</h2>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item">
+        <div class="svc-role">Member <span class="svc-meta" style="display:inline;">· 2011–present</span></div>
+        <div class="svc-org">American Society of Heating, Refrigerating and Air-Conditioning Engineers (ASHRAE)</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Member <span class="svc-meta" style="display:inline;">· 2019–present</span></div>
+        <div class="svc-org">American Society of Civil Engineers (ASCE)</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Member <span class="svc-meta" style="display:inline;">· 2024–present</span></div>
+        <div class="svc-org">Chinese Institute of Civil and Hydraulic Engineering (CICHE)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEADERSHIP & INSTITUTIONAL SERVICE -->
+  <div class="group-section" id="institutional">
+    <div class="group-section-header">
+      <h2>Leadership &amp; Institutional Service</h2>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item">
+        <div class="svc-role">Board Director <span class="svc-meta" style="display:inline;">· 2024–present</span></div>
+        <div class="svc-org">Taiwan Construction Research Institute (財團法人台灣營建研究院)</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Director (理事) <span class="svc-meta" style="display:inline;">· 2024–2026</span></div>
+        <div class="svc-org">NTU Civil Engineering Alumni Association (臺大土木校友聯誼會)</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Secretary-General <span class="svc-meta" style="display:inline;">· 2025–present</span></div>
+        <div class="svc-org">Taiwanese Institute of Built Environment Lifecycle Management (BLM · 台灣人居環境全生命週期管理學會)</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Committee Roles — Chinese Institute of Civil and Hydraulic Engineering (CICHE)</div>
+        <div class="svc-org">Chair, Student Committee <span class="svc-meta" style="display:inline;">(2024–present)</span>; Member, Membership Committee <span class="svc-meta" style="display:inline;">(2024–present)</span>; Member, International Affairs Committee <span class="svc-meta" style="display:inline;">(2024–present)</span>; Member, Engineering Management Committee <span class="svc-meta" style="display:inline;">(2026–present)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIVERSITY & DEPARTMENT SERVICE -->
+  <div class="group-section" id="university">
+    <div class="group-section-header">
+      <h2>University &amp; Department Service</h2>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item">
+        <div class="svc-role">Deputy Chair <span class="svc-meta" style="display:inline;">· Aug 2025–present</span></div>
+        <div class="svc-org">Department of Civil Engineering, National Taiwan University</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Committee Member <span class="svc-meta" style="display:inline;">· 2025–present</span></div>
+        <div class="svc-org">Campus Urban Renewal Project Task Force, National Taiwan University</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Coordinator, Construction Engineering &amp; Management Division <span class="svc-meta" style="display:inline;">· May 2023 – Aug 2025</span></div>
+        <div class="svc-org">Department of Civil Engineering, National Taiwan University</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOURNAL EDITORIAL BOARDS -->
+  <div class="group-section" id="editorial">
+    <div class="group-section-header">
+      <h2>Journal Editorial Boards</h2>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item">
+        <div class="svc-role">Early-Career Editorial Board Member <span class="svc-meta" style="display:inline;">· 2022–present</span></div>
+        <div class="svc-org">Building and Environment (Elsevier)</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Editorial Review Board Member (編審委員) <span class="svc-meta" style="display:inline;">· 2025–present</span></div>
+        <div class="svc-org">Journal of Architecture (建築學報)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFERENCE ORGANIZATION -->
+  <div class="group-section" id="conference">
+    <div class="group-section-header">
+      <h2>Conference Organization</h2>
+    </div>
+    <div class="svc-list">
+      <div class="svc-item">
+        <div class="svc-role">Secretary</div>
+        <div class="svc-org">The 25th Symposium on Construction Engineering and Management (SCEM)</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">International Scientific Committee · Session Chair</div>
+        <div class="svc-org">Indoor Air 2026</div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-role">Session Chair</div>
+        <div class="svc-org">International Conference on Indoor Air Quality, Ventilation and Energy Conservation in Buildings (IAQVEC 2026)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOURNAL REVIEW PANELS -->
+  <div class="group-section" id="review">
+    <div class="group-section-header">
+      <h2>Peer Review — Journal Review Panels</h2>
+      <span class="count">28 journals</span>
+    </div>
+    <div class="review-grid">
+      <div class="review-item"><div class="review-name">Advanced Engineering Informatics<span class="review-pub">Elsevier</span></div></div>
+      <div class="review-item"><div class="review-name">Annals of the Brazilian Academy of Sciences<span class="review-pub">Brazilian Academy of Sciences</span></div></div>
+      <div class="review-item"><div class="review-name">Applied Energy<span class="review-pub">Elsevier</span></div></div>
+      <div class="review-item"><div class="review-name">Architectural Science Review<span class="review-pub">Taylor &amp; Francis</span></div></div>
+      <div class="review-item"><div class="review-name">ASCE Journal of Architectural Engineering<span class="review-pub">ASCE</span></div></div>
+      <div class="review-item"><div class="review-name">ASCE Journal of Energy Engineering<span class="review-pub">ASCE</span></div></div>
+      <div class="review-item"><div class="review-name">ASHRAE Transactions<span class="review-pub">ASHRAE</span></div></div>
+      <div class="review-item"><div class="review-name">Automation in Construction<span class="review-pub">Elsevier</span></div></div>
+      <div class="review-item"><div class="review-name">Building and Environment<span class="review-pub">Elsevier</span></div></div>
+      <div class="review-item"><div class="review-name">Building Simulation: An International Journal<span class="review-pub">Springer</span></div></div>
+      <div class="review-item"><div class="review-name">Buildings<span class="review-pub">MDPI</span></div></div>
+      <div class="review-item"><div class="review-name">Energies<span class="review-pub">MDPI</span></div></div>
+      <div class="review-item"><div class="review-name">Energy and Buildings<span class="review-pub">Elsevier</span></div></div>
+      <div class="review-item"><div class="review-name">Environmental Science and Pollution Research<span class="review-pub">Springer</span></div></div>
+      <div class="review-item"><div class="review-name">Indoor Air<span class="review-pub">Wiley</span></div></div>
+      <div class="review-item"><div class="review-name">Indoor and Built Environment<span class="review-pub">SAGE</span></div></div>
+      <div class="review-item"><div class="review-name">Innovative Infrastructure Solutions<span class="review-pub">Springer</span></div></div>
+      <div class="review-item"><div class="review-name">Journal of Applied Science and Engineering<span class="review-pub">Tamkang University Press</span></div></div>
+      <div class="review-item"><div class="review-name">Journal of Asian Architecture and Building Engineering<span class="review-pub">Taylor &amp; Francis</span></div></div>
+      <div class="review-item"><div class="review-name">Journal of Building Performance Simulation<span class="review-pub">Taylor &amp; Francis</span></div></div>
+      <div class="review-item"><div class="review-name">Journal of the Chinese Institute of Engineers<span class="review-pub">Taylor &amp; Francis</span></div></div>
+      <div class="review-item"><div class="review-name">LEUKOS<span class="review-pub">Taylor &amp; Francis (IES)</span></div></div>
+      <div class="review-item"><div class="review-name">Lighting Research &amp; Technology<span class="review-pub">SAGE</span></div></div>
+      <div class="review-item"><div class="review-name">Nature Sustainability<span class="review-pub">Springer Nature</span></div></div>
+      <div class="review-item"><div class="review-name">PLOS Sustainability and Transformation<span class="review-pub">PLOS</span></div></div>
+      <div class="review-item"><div class="review-name">Science and Technology for the Built Environment<span class="review-pub">ASHRAE / Taylor &amp; Francis</span></div></div>
+      <div class="review-item"><div class="review-name">Solar Energy<span class="review-pub">Elsevier</span></div></div>
+      <div class="review-item"><div class="review-name">Sustainability<span class="review-pub">MDPI</span></div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 Ying-Chieh Chan · Department of Civil Engineering, National Taiwan University</footer>
+</body>
+</html>
