@@ -80,7 +80,7 @@ Sections (in order):
 Alumni entries use `.award-badge` for thesis awards and `.alumni-name-cn` span for Chinese names alongside romanized names.
 
 ## Recurring Students / People
-- **譚世麟** — PhD, building energy simulation (30th SCEM Best Paper)
+- **譚世麟** — PhD, building energy simulation (30th SCEM Excellent Paper)
 - **林逸群** — PhD, positive energy community
 - **陳加乘** — PhD, public art and built environment
 - **高健智** — PhD, system dynamics
