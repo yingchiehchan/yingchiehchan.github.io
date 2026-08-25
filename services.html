@@ -25,20 +25,20 @@
     .brand { font-weight: 700; font-size: 0.88rem; letter-spacing: 0.04em; color: #fff; text-decoration: none; text-transform: uppercase; }
 
     /* PAGE HEADER */
-    .page-header { padding: 96px 7% 40px; border-bottom: 1px solid var(--border); background: var(--white); }
-    .page-header-inner { max-width: 960px; margin: 0 auto; }
+    .page-header { padding: 96px 0 40px; border-bottom: 1px solid var(--border); background: var(--white); }
+    .page-header-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
     .kicker { font-size: 0.69rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
     .page-header h1 { font-size: 1.8rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.02em; }
     .page-header p { font-size: 0.875rem; color: var(--muted); max-width: 580px; line-height: 1.6; }
 
     /* JUMP NAV */
-    .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 7%; position: sticky; top: 56px; z-index: 100; }
-    .jump-bar-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0; }
+    .jump-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0; position: sticky; top: 56px; z-index: 100; }
+    .jump-bar-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 0; }
     .jump-btn { padding: 13px 16px; font-size: 0.77rem; font-weight: 500; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; text-decoration: none; display: block; transition: color .2s, border-color .2s; }
     .jump-btn:hover { color: var(--navy); border-bottom-color: var(--navy); }
 
     /* CONTENT */
-    .content { max-width: 960px; margin: 0 auto; padding: 44px 7% 80px; }
+    .content { max-width: 960px; margin: 0 auto; padding: 44px 24px 80px; }
 
     /* SECTION HEADER */
     .group-section { margin-bottom: 52px; }
@@ -87,9 +87,8 @@
       .nav-links { display: none; }
       .hamburger { display: block; }
       .review-grid { grid-template-columns: 1fr; }
-      .content { padding: 32px 5% 60px; }
-      .page-header { padding: 80px 5% 32px; }
-      .jump-bar { padding: 0 5%; }
+      .content { padding: 32px 24px 60px; }
+      .page-header { padding: 80px 0 32px; }
     }
   </style>
 </head>
