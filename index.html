@@ -28,10 +28,10 @@
       position:fixed;top:0;left:0;right:0;z-index:200;
       background:var(--navy);height:56px;
       display:flex;align-items:center;justify-content:space-between;
-      padding:0 7%;
+      padding:0 max(24px, calc((100% - 960px)/2 + 24px));
     }
     .brand{color:#fff;font-weight:700;font-size:0.88rem;letter-spacing:0.04em;text-decoration:none;text-transform:uppercase}
-    nav ul{list-style:none;display:flex;gap:24px}
+    nav ul{list-style:none;display:flex;gap:14px}
     nav a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.77rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;transition:color .2s}
     nav a:hover{color:#fff}
 
@@ -140,12 +140,13 @@
     .hamburger span{display:block;width:20px;height:2px;background:#fff;margin:4px 0}
     .mobile-menu{
       display:none;position:fixed;top:56px;left:0;right:0;z-index:199;
-      background:var(--navy);padding:16px 7%;flex-direction:column;gap:16px;
+      background:var(--navy);padding:16px max(24px, calc((100% - 960px)/2 + 24px));flex-direction:column;gap:16px;
       border-top:1px solid rgba(255,255,255,0.1);
     }
     .mobile-menu.open{display:flex}
     .mobile-menu a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
     .mobile-menu a:hover{color:#fff}
+    @media(max-width:1060px){ nav ul{display:none} .hamburger{display:block} }
     @media(max-width:768px){
       .hero-grid{grid-template-columns:1fr}
       .hero-photo{width:140px;height:168px}
@@ -214,6 +215,7 @@
         <a href="tel:+886233664332">+886-2-3366-4332</a>
         <a href="https://scholar.google.com/citations?user=SIONlOgAAAAJ" target="_blank">Google Scholar</a>
         <a href="https://orcid.org/0000-0002-4195-8739" target="_blank">ORCID 0000-0002-4195-8739</a>
+        <a href="https://www.researchgate.net/profile/Ying-Chieh-Chan" target="_blank">ResearchGate</a>
         <a href="https://www.linkedin.com/in/ying-chieh-chan-0011a552/" target="_blank">LinkedIn</a>
       </div>
     </div>
